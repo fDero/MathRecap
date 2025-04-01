@@ -38,7 +38,7 @@ $$ \exists h : f \circ h = id_B \Rightarrow [\forall y \in B\; \exists x = h(y) 
 \end{lemma}
 
 \begin{lemma}(Injectivity implies existence of the left inverse)
-\label{lem:injectiveLeftInverse}
+\label{lem:injectiveInverse}
 Assuming the existence of a function $\zeta$ that returns a single element of a given set, called the choice function, we can prove 
 that if a function $f : A \rightarrow B$ is injective, then it has a left inverse.
 
@@ -54,7 +54,7 @@ that if a function $f : A \rightarrow B$ is injective, then it has a left invers
 
 
 \begin{lemma}(Injectivity implies existence of the left inverse)
-\label{lem:surjectiveRightInverse}
+\label{lem:suriectiveInverse}
 Assuming the existence of a function $\zeta$ that returns a single element of a given set, called the choice function, we can prove 
 that if a function $f : A \rightarrow B$ is suriective, then it has a right inverse.
 
@@ -65,8 +65,6 @@ that if a function $f : A \rightarrow B$ is suriective, then it has a right inve
      
 Please note that the assumption that the choice function exists is not a trivial one. It is actually not 
 provable in ZF set theory alone, so it usually assumed to be true by making it an axiom itself. This makes 
-up a new theory called ZFC (ZFC + AC axiom of choice). Luckily for us, the axiom of choice is not needed to back-up these claims when we are dealing with bijections, 
-since in lemma \ref{lem:injectiveLeftInverse} we can just take the inverse of the function itself, which is guaranteed to exist, while 
-in lemma \ref{lem:surjectiveRightInverse} we can define $\zeta(\{x\}) = x$ since we know its only called on singletons. So 
-for now, we will only use such lemmas to work with bijections. We will later 
-introduce a new axiom from which we can derive the axiom of choice, so we will be able to use it in the future. \\
+up a new theory called ZFC (ZFC + AC axiom of choice). For now, we will not use these theorems and we will just 
+claim that every bijection is invertible using the definition of bijectivity (lemma \ref{lem:inverseOfBijection}). We will soon 
+introduce a new axiom which implies AC and then we will be able to use these results. \\

@@ -3,38 +3,110 @@ Building a function from the ground up is a bit tricky, since we need to define 
 will first define a tuple, then a relation and finally a function. We will also define the concepts of injectivity and suriectivity.
 
 \begin{definition}[Tuple]
-We can define a tuple like $(a_0, a_1, a_2, \ldots, a_n)$ as a set, since everything 
-in set-theory is just sets. In particular, we can make the following definition:
+    We can define a tuple like $(a_0, a_1, a_2, \ldots, a_n)$ as a set, since 
+    everything in set-theory is just sets. In particular, we can make the 
+    following definition:
 
-$$ (a_0, a_1, a_2, \ldots, a_n) = \{ \{0, \{a_1\}\}, ..., \{n, \{a_n\}\} \}$$
+    $$ (a_0, a_1, a_2, \ldots, a_n) = \{ \{0, \{a_1\}\}, ..., \{n, \{a_n\}\} \}$$
 \end{definition}
 
 \begin{definition}[Relation]
-A relation is basically a boolean predicate with two arguments. We can define a relation
-$R$ as the set of tuples that satisfy the relation. For example, the relation $R$ 
-can be defined as a subset of the cartesian product of two sets $A$ and $B$ (the domain and codomain of the relation):
+    A relation is basically a boolean predicate with two arguments. We can define a 
+    relation $R$ as the set of tuples that satisfy the relation. For example, the 
+    relation $R$ can be defined as a subset of the cartesian product of two sets $A$ 
+    and $B$ (the domain and codomain of the relation):
 
-$$ a\;R\;b \iff (a,b) \in R \subseteq A \times B $$
+    $$ a\;R\;b \iff (a,b) \in R \subseteq A \times B $$
 \end{definition}
 
 \begin{definition}[Function]
-A function is a special case of a relation, where every elemt in the domain 
-has exactly one image in the codomain.
+    A function is a special case of a relation, where every elemt in the domain 
+    has exactly one image in the codomain.
 
-$$ a\;f\;b \iff b = f(a) $$
-$$ f : A \rightarrow B = \{ (x,f(x)) \in A \times B \} $$
+    $$ a\;f\;b \iff b = f(a) $$
+    $$ f : A \rightarrow B = \{ (x,f(x)) \in A \times B \} $$
+\end{definition}
 
 \begin{definition}[Injection]
-An injective function, also called \emph{injection}, is a function that maps distinct elements of the domain to distinct elements of the codomain.
+    An injective function, also called \emph{injection}, is a function that 
+    maps distinct elements of the domain to distinct elements of the codomain.
 
-$$ \forall x_1, x_2 \in A : f(x_1) = f(x_2) \Rightarrow x_1 = x_2 $$
-$$ \nexists x_1 \neq x_2 \in A : f(x_1) = f(x_2) $$
+    $$ \forall x_1, x_2 \in A : f(x_1) = f(x_2) \Rightarrow x_1 = x_2 $$
+    $$ \nexists x_1 \neq x_2 \in A : f(x_1) = f(x_2) $$
 \end{definition}
 
 \begin{definition}[Suriection]
-A suriective function, also called \emph{suriection}, is a function such that no elements of the codomain are unreachable.
-    
-$$ \forall y \in B \exists x \in A : f(x) = y $$
+    A suriective function, also called \emph{suriection}, is a function such that 
+    no elements of the codomain are unreachable.
+        
+    $$ \forall y \in B \exists x \in A : f(x) = y $$
 \end{definition}
     
+\begin{definition}[Bijection]
+\label{def:bijection}
+    A bijective function, also called \emph{bijection}, is a function that is both an 
+    injection and a suriection. Note that a bijection is a function that maps distinct 
+    elements of the domain to distinct elements of the codomain and every element in the 
+    codomain is reachable by some element in the domain. \\
+\end{definition}
+\newpage
+
+\begin{definition}[Image]
+    We call $\vv{f}(S)$ the image of a given set $S$ under the function $f$. The 
+    image of a set is the set of the elements in the codomain mapped by elements in $S$ 
+    via the function $f$. \\
+
+    $$ \vv{f}(S) = \{ f(x) \in B : x \in S \} $$ \\
+\end{definition}
+
+
+\begin{definition}[Anti-image]
+    We call $\cev{f}(T)$ the anti-image of a given set $T$ under the function $f$. The 
+    anti-image of a set is the set of the elements in the domain mapped to elements in $T$ 
+    via the function $f$. \\
+
+    $$ \cev{f}(T) = \{ x \in A : f(x) \in T \} $$ \\
+\end{definition}
+
+
+\begin{lemma} 
+    The anti-image of a singleton set is either a singleton set or the empty set for every 
+    injection. \\
+\end{lemma}
+\begin{proof}
+    Let $A = \cev{f}(\{y\})$ be the set of all the $x \in A$ such that $f(x) = y$.
+    We can apply the definition of injection and say that if $f(x_1) = f(x_2)$ 
+    then $x_1 = x_2$. Therefore if $x1,x2 \in A \Rightarrow x1 = x2$, so either $A = \{x\}$ or $A = \varnothing$. \\
+\end{proof}
+
+\begin{lemma} 
+    The anti-image of a singleton set is never empty for every 
+    suriection. \\
+\end{lemma}
+\begin{proof}
+    Let $A = \cev{f}(\{y\})$ be the set of all the $x \in A$ such that $f(x) = y$.
+    We can apply the definition of suriection and say that an $x$ such that $f(x) = y$ can always be found. 
+    Hence such $x$ is in $A$ which therefore can't be empty. \\
+\end{proof}
+
+\begin{lemma} 
+\label{lem:inverseOfBijection}
+    The image of a singleton set is a singleton for every bijection $f$. Hence 
+    a function $f^{-1}$ can be defined as $f^{-1}(y) = \zeta_1(\cev{f}(\{y\}))$ where $\zeta_1(\{x\}) = x$.\\
+\end{lemma}
+
+Notice that, $f^{-1} \circ f = id_A$ and $f \circ f^{-1} = id_B$, we call this function 
+the inverse of $f$.
+
+\begin{lemma} 
+    The images of disjoint sets are disjoint under any injection.
+\end{lemma}
+\begin{proof}
+    Let $A_1$ and $A_2$ be two disjoint sets. We can apply the definition of injection and say that if $f(x_1) = f(x_2)$ 
+    then $x_1 = x_2$. Therefore if $x1 \in A_1$ and $x2 \in A_2$ then $f(x1) \neq f(x2)$, this implies that 
+    $\vv{f}(A_1)$ and $\vv{f}(A_1)$ are disjoint since the generic element of $\vv{f}(A_1)$ is in the form $f(x_1)$ and 
+    the generic element of $\vv{f}(A_1)$ are in the form $f(x_2)$ and such elements are never equals under the assumptions that 
+    x1 and x2 are elements of disjoint sets hence they're not equal. \\
+\end{proof}
+
 \newpage
