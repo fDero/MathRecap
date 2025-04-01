@@ -1,7 +1,12 @@
 
 \subsection{Funamentals of cardinality}
 Regardless of the definition of cardinality that we choose to use, we denote $|A|$ the 
-cardinality of $A$. We will propose two different definition for cardinality.
+cardinality of $A$. We will propose two different definition for cardinality. We will use the 
+notation $|A| \darr |B|$ to denote that $|A|$ and $|B|$ are in mutual injection, 
+thus that both an injection from $A$ to $B$ and an injection from $B$ to $A$ exist. Bijection 
+clearly implies mutual injection. The Bernstein's theorem (theorem \ref{thm:Bernstein}) states that 
+if there is a mutual injection implies mutual bijection, but right 
+now, we can't prove it yet. \\
 
 \begin{definition}[Cardinality with AC]
 \label{def:cardinalityAC}
@@ -12,10 +17,7 @@ Assuming well ordering is essential to this definition.
 \begin{definition}[Scott's cardinality]
 \label{def:cardinalityAC}
 The cardinality of a set $A$ is the set of all sets in mutal injection with $A$ that also have 
-minimal rank. Bijection clearly implies mutual injection. The Bernstein's theorem (theorem
-\ref{thm:Bernstein}) states that if there is a mutual injection between two sets, then there is a
-bijection between them, but right now, we can't prove it yet, so we will stick with this definition 
-(which is also indipendent from the AC). \\
+minimal rank. \\
 \end{definition}
 
 \begin{definition}[Cardinality comparison]

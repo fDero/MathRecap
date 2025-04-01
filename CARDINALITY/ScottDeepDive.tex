@@ -73,6 +73,23 @@ constructed another set, $V_{\omega} \cup \{ V_{\omega} \}$, which is not of min
 still being in bijection with $V_{\omega}$. This means that the previous argument will fail 
 under the rank-aware definition of Scott's cardinality. \\
 
+\begin{lemma}(Trasitivity of cardinality comparison) 
+    $|A| \leq |B| \land |B| \leq |C| \Rightarrow |A| \leq |C|$.
+\end{lemma}
+\begin{proof}
+    Let $f_{AB}$ be the injection from $A$ to $B$ and $f_{BC}$ be the injection from $B$ to $C$.
+    We can construct $f_{AC} = f_{BC} \circ f_{AB}$, which is an injection from $A$ to $C$, thus $|A| \leq |C|$.
+\end{proof} 
+
+\begin{lemma}(Trasitivity of mutual injection) 
+    $|A| \darr |B| \land |B| \darr |C| \Rightarrow |A| \darr |C|$.
+\end{lemma}
+\begin{proof}
+    $$ |A| \darr |B| \darr |C| \Rightarrow |A| \leq |B| \leq |C| $$
+    $$ |C| \darr |B| \darr |A| \Rightarrow |C| \leq |B| \leq |A| $$
+    $$ \therefore |A| \darr |C| $$ \\
+\end{proof} 
+
 \begin{lemma}(Correctness of Scott's cardinality) 
     Even considering only sets of minimal rank, two sets in mutual injection
     still have the same cardinality regardless of their ranks.
@@ -85,4 +102,18 @@ under the rank-aware definition of Scott's cardinality. \\
     $A$, which is in mutal injection with $B$, which is in mutal injection with every set in $|B|$.
 
     $$ \forall X \in |A|\;\; X \darr A \land A \darr B \land B \darr Y \;\;\forall Y \in |B|$$
+\end{proof}
+
+\begin{definition}[Successor cardinality]
+    The successor cardinality $k^{+}$ of a given cardinality $k$ is 
+    the smallest possible cardinality strictly greater than $k$ under cardinality-comparison. 
+\end{definition}
+
+\begin{lemma}[Existence of the successor cardinality]
+    Every cardinality has a successor.
+\end{lemma}
+\begin{proof}
+    The Cantor's theorem (theorem \ref{thm:Cantor}) states that for every set $A$, 
+    the power set of $A$ is strictly greater than $A$ itself. Hence, no cardinality 
+    can ever be the greatest one. \\
 \end{proof}
