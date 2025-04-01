@@ -6,6 +6,7 @@
 %                               PACKAGES                                     %
 %----------------------------------------------------------------------------%
 
+\usepackage{mathtools}
 \usepackage{esvect}
 \usepackage{subfiles}
 \usepackage{fullpage}
@@ -47,6 +48,8 @@
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
+
+\newcommand{\cev}[1]{\reflectbox{\ensuremath{\vv{\reflectbox{\ensuremath{#1}}}}}}
 
 \titleformat*{\section}{\Large\bfseries}
 \titleformat*{\subsection}{\Large\bfseries}
@@ -92,6 +95,13 @@
 
     \subfile{TitlePage}  
 
+    \pagenumbering{gobble}
+    \tableofcontents    
+    \newpage
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+
+    \subfile{FUNCTIONS/FUNCTIONS}
     \subfile{GCH/GCH}
 
 \end{document}

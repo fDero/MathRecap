@@ -1,0 +1,72 @@
+\subsection{Formal notion of invertibility}
+In mathematics we often end up talking about invertible functions. In this section 
+we will define the concept of invertibility and bijectivity 
+and we will prove that a function is invertible if and only if it is bijective.
+
+\begin{definition}[Left inverse]
+A function $g : B \rightarrow A$ is the left inverse of $f : A \rightarrow B$ if 
+and only if $ g \circ f = \texttt{id}_A$, where $\texttt{id}_A$ is the identity function on the set $A$.
+
+$$ \forall x \in A : g(f(x)) = x $$
+\end{definition}
+
+
+\begin{definition}[Right inverse]
+A function $h : B \rightarrow A$ is the right inverse of $f : A \rightarrow B$ if 
+and only if $ f \circ h = \texttt{id}_B$, where $\texttt{id}_B$ is the identity function on the set $B$.
+
+$$ \forall y \in B : f(h(y)) = y $$
+\end{definition}
+
+
+\begin{lemma}(Uniqueness of the inverse)
+If a function $f : A \rightarrow B$ has a left inverse $g : B \rightarrow A$ and a right inverse $h : B \rightarrow A$, then $g = h$.
+
+$$ g = g \circ id_A = g \circ (f \circ h) = (g \circ f) \circ h = id_B \circ h = h $$
+\end{lemma}
+
+\begin{lemma}(Existence of the left inverse implies injectivity)
+If a function $f : A \rightarrow B$ has a left inverse $g : B \rightarrow A$ that function is injective.
+
+$$ \exists g : g \circ f = id_A \Rightarrow [f(x_1) = f(x_2) \Rightarrow g(f(x_1)) = g(f(x_2)) \Rightarrow x_1 = x_2] $$ 
+\end{lemma}
+
+\begin{lemma}(Existence of the right inverse implies suriectivity)
+If a function $f : A \rightarrow B$ has a left right $h : B \rightarrow A$ that function is suriective.
+
+$$ \exists h : f \circ h = id_B \Rightarrow [\forall y \in B\; \exists x = h(y) : f(x) = y ] $$ 
+\end{lemma}
+
+\begin{lemma}(Injectivity implies existence of the left inverse)
+\label{lem:injectiveLeftInverse}
+Assuming the existence of a function $\zeta$ that returns a single element of a given set, called the choice function, we can prove 
+that if a function $f : A \rightarrow B$ is injective, then it has a left inverse.
+
+\begin{equation*}
+    g(y) =
+    \begin{cases*}
+        x \in A : f(x) = y & if it exists \\
+        \zeta(A)           & otherwise
+    \end{cases*}
+\end{equation*}
+\end{lemma}
+    
+
+
+\begin{lemma}(Injectivity implies existence of the left inverse)
+\label{lem:surjectiveRightInverse}
+Assuming the existence of a function $\zeta$ that returns a single element of a given set, called the choice function, we can prove 
+that if a function $f : A \rightarrow B$ is suriective, then it has a right inverse.
+
+\begin{equation*}
+    h(y) = \zeta(\cev{f}(\{y\}))
+\end{equation*}
+\end{lemma}
+     
+Please note that the assumption that the choice function exists is not a trivial one. It is actually not 
+provable in ZF set theory alone, so it usually assumed to be true by making it an axiom itself. This makes 
+up a new theory called ZFC (ZFC + AC axiom of choice). Luckily for us, the axiom of choice is not needed to back-up these claims when we are dealing with bijections, 
+since in lemma \ref{lem:injectiveLeftInverse} we can just take the inverse of the function itself, which is guaranteed to exist, while 
+in lemma \ref{lem:surjectiveRightInverse} we can define $\zeta(\{x\}) = x$ since we know its only called on singletons. So 
+for now, we will only use such lemmas to work with bijections. We will later 
+introduce a new axiom from which we can derive the axiom of choice, so we will be able to use it in the future. \\

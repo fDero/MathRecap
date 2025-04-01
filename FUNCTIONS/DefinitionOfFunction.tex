@@ -1,0 +1,40 @@
+\subsection{Formal construction of a function}
+Building a function from the ground up is a bit tricky, since we need to define a function in terms of sets. We 
+will first define a tuple, then a relation and finally a function. We will also define the concepts of injectivity and suriectivity.
+
+\begin{definition}[Tuple]
+We can define a tuple like $(a_0, a_1, a_2, \ldots, a_n)$ as a set, since everything 
+in set-theory is just sets. In particular, we can make the following definition:
+
+$$ (a_0, a_1, a_2, \ldots, a_n) = \{ \{0, \{a_1\}\}, ..., \{n, \{a_n\}\} \}$$
+\end{definition}
+
+\begin{definition}[Relation]
+A relation is basically a boolean predicate with two arguments. We can define a relation
+$R$ as the set of tuples that satisfy the relation. For example, the relation $R$ 
+can be defined as a subset of the cartesian product of two sets $A$ and $B$ (the domain and codomain of the relation):
+
+$$ a\;R\;b \iff (a,b) \in R \subseteq A \times B $$
+\end{definition}
+
+\begin{definition}[Function]
+A function is a special case of a relation, where every elemt in the domain 
+has exactly one image in the codomain.
+
+$$ a\;f\;b \iff b = f(a) $$
+$$ f : A \rightarrow B = \{ (x,f(x)) \in A \times B \} $$
+
+\begin{definition}[Injection]
+An injective function, also called \emph{injection}, is a function that maps distinct elements of the domain to distinct elements of the codomain.
+
+$$ \forall x_1, x_2 \in A : f(x_1) = f(x_2) \Rightarrow x_1 = x_2 $$
+$$ \nexists x_1 \neq x_2 \in A : f(x_1) = f(x_2) $$
+\end{definition}
+
+\begin{definition}[Suriection]
+A suriective function, also called \emph{suriection}, is a function such that no elements of the codomain are unreachable.
+    
+$$ \forall y \in B \exists x \in A : f(x) = y $$
+\end{definition}
+    
+\newpage
