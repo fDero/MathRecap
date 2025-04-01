@@ -6,6 +6,7 @@
 %                               PACKAGES                                     %
 %----------------------------------------------------------------------------%
 
+\usepackage{esvect}
 \usepackage{subfiles}
 \usepackage{fullpage}
 \usepackage{amsmath}
@@ -45,8 +46,9 @@
 
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
 
-\titleformat*{\section}{\Huge\bfseries}
+\titleformat*{\section}{\Large\bfseries}
 \titleformat*{\subsection}{\Large\bfseries}
 \titleformat*{\subsubsection}{\large\bfseries}
 \titleformat*{\paragraph}{\large\bfseries}
@@ -89,15 +91,7 @@
 \begin{document}
 
     \subfile{TitlePage}  
-    \newpage
 
-    \pagenumbering{gobble}
-    \tableofcontents    
-    \newpage
-    \pagenumbering{arabic}
-    \setcounter{page}{1}
-
-    \subfile{Intro} 
-    \newpage
+    \subfile{GCH/GCH}
 
 \end{document}

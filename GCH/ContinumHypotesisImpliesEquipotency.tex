@@ -1,0 +1,37 @@
+\subsection{Sierpinski's theorem}
+The Sierpinski's theorem states that the GCH implies that for every infinite set $A$ the cardinality of the cartesian product of $A$ 
+with itself is the same as the cardinality of $A$ itself. This means that $A \times A \sim A$ for every infinite set $A$.
+
+\begin{lemma}
+    Let $k$ be a cardinality of an infinite set, then $k + 1 = k$ under the assumption that the generalized continum 
+    hypotesys holds true at least for $k$ (local GCH for $k$).
+\end{lemma}
+\begin{proof}
+    $$ k \leq k + 1 < 2^k                                                  $$
+    $$ \texttt{GCH(k)}: \exists \bar{k} : k \leq \bar{k} < 2^k \Rightarrow \bar{k} = k $$
+    $$ \therefore k + 1 = k                                                $$
+\end{proof}
+
+\begin{lemma}
+    Let $k$ be a cardinality of an infinite set, then $2k = k$ under the assumption that the generalized continum 
+    hypotesys holds true at least for $k$ (local GCH for $k$).
+\end{lemma}
+\begin{proof}
+    $$ k \leq k + k < 2^k + 2^k = 2^{k+1} = 2^k                                        $$
+    $$ \texttt{GCH(k)}: \exists \bar{k} : k \leq \bar{k} < 2^k \Rightarrow \bar{k} = k $$
+    $$ \therefore 2k = k                                                               $$
+\end{proof}
+
+\begin{theorem}[Sierpinski's theorem]
+    Let $k$ be a cardinality of an infinite set, then $k^2 = k$ under the assumption that the generalized continum 
+    hypotesys holds true at least for $k$.
+\end{theorem}
+\begin{proof}
+    $$ k \leq k^2 < (2^k)^2 = 2^{2k} = 2^k                                             $$
+    $$ \texttt{GCH(k)}: \exists \bar{k} : k \leq \bar{k} < 2^k \Rightarrow \bar{k} = k $$
+    $$ \therefore k^2 = k                                                              $$
+\end{proof}
+
+Notice how we can assume that GCH holds true in general and then prove that for every infinite set $A$ with cardinality 
+$k$, since $k = k^2$ then $A \times A \sim A$. This clearly holds true for $\mathbb{N}$, but 
+with the GCH this also applies to $\mathbb{R}$ and to every infinite set in general. \newpage
