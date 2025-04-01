@@ -1,0 +1,86 @@
+\subsection{Scott's cardinality in depth}
+Scott's cardinality is a way to define the cardinality of a set that is independent from 
+AC. We made use of the concept of rank in the definition of
+cardinality. Specifically, the cardinality of a set $A$ is the set of all sets in
+mutual injection with $A$ that also have minimal rank. Why is that? because if we 
+were to consider the set of all sets in mutual injection with $A$ regardless of their rank, 
+we would end up with an ill-formed set.
+
+\begin{lemma}(Wrapping lemma)
+    Let $A$ be a well-ordered infinite set, then, then $A \cup \{ X \}$ is 
+    in bijection with $A$ for every possible choice of a generic set $X$.
+\end{lemma}
+\begin{proof}
+    Let $\alpha$ be the ordinal in bijection with $A : \alpha \rightarrow (\alpha \cup \{X\})$ as follows:
+
+    \begin{equation*}
+        f(x) = 
+        \begin{cases*}
+            x' & if \( x = x' + 1 \)          \\
+            \{X\}  & if \( x = 0 \)       \\
+        \end{cases*}
+    \end{equation*}                           \\
+
+    We can exibit an inverse for this function herby proving its bijectivity by construction:
+
+    \begin{equation*}
+        f^{-1}(x) = 
+        \begin{cases*}
+            x + 1      & if \( x \in \alpha \)  \\
+            0          & if \( x = \{X\} \) \\
+        \end{cases*}
+    \end{equation*}                             \\
+
+    Since $A$ is an infinite well-ordered set, it is in bijection with some $\alpha$ hence some $(\alpha \;\cup \{X\})$ is in 
+    bijection with $A$ as well. This result can be tought of as $|A| + 1 = |A|$ for every well ordered infinite set.
+    
+
+\end{proof}
+
+\begin{lemma}(Ill-formedness of rankless definition of cardinality) 
+    The class of every set in mutual injection with a given set is not a set for every 
+    well-ordered infinite set.
+\end{lemma}
+\begin{proof}
+    Let $A$ be a well-ordered infinite set, let $A^*$ be the class of all sets in mutual 
+    injection with $A$. Notice that $A \cup \{X\}$ is in bijection with $A$ for every
+    possible choice of a generic set $X$. Hence, it is in $A^*$. Now, consider the following construction:
+
+    $$ A \cup \{X\} \in A^* $$ \vspace{0.05cm}
+    $$ \{X\} \subseteq \bigcup_{S \in A^*} S $$
+    $$ X \in P(\bigcup_{S \in A^*} S) $$
+    
+    This means that assuming that $A^*$ is a set, led us to a way of creating the universal set, 
+    which itself gives us a way to fall within the russel paradox. This means that $A^*$ is not a 
+    well-formed set, hence we can conclude that the class of all sets in mutual injection is not 
+    a set for every well-ordered infinite set. Under AC, this generalizes to the fact that 
+    no class of sets in bijection with any infinite sets can ever be a set. \\
+
+\end{proof}
+
+\newpage
+
+One could ask himself why is that the case that the previous argument doesn't apply 
+to the proper Scott's cardinality definition that takes the rank into account. The 
+reason is simple: assuming that $S$ is a set of minimal rank, it's not the case that 
+$ S \cup \{X\}$ is also of minimal rank. We can exibit a counterexample for this:
+
+$$ V_{\omega} \subseteq V_{\omega} $$
+$$ V_{\omega} \cup \{ V_{\omega} \} \not\subseteq V_{\omega} $$ \\
+
+We took a set of rank $\omega$ of minimal rank $V_{\omega}$ and we 
+constructed another set, $V_{\omega} \cup \{ V_{\omega} \}$, which is not of minimal rank while 
+still being in bijection with $V_{\omega}$. This means that the previous argument will fail 
+under the rank-aware definition of Scott's cardinality. \\
+
+\begin{lemma}(Correctness of Scott's cardinality) 
+    Even considering only sets of minimal rank, two sets in mutual injection
+    still have the same cardinality regardless of their ranks.
+\end{lemma}
+\begin{proof}
+    For every two sets $A$ and $B$, them being in mutual injection implies that they have the 
+    same cardinality. In fact, Let $|A|$ be the set of all sets in mutual injection with 
+    $A$ that also have minimal rank. May $|B|$ also be the set of all sets in mutual
+    injection with $B$ that also have minimal rank. every set in $|A|$ is in mutual injection with 
+    $A$, which is in mutal injection with $B$, which is in mutal injection with every set in $|B|$.
+\end{proof}

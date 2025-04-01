@@ -1,0 +1,58 @@
+
+\subsection{Funamentals of cardinality}
+Regardless of the definition of cardinality that we choose to use, we denote $|A|$ the 
+cardinality of $A$. We will propose two different definition for cardinality.
+
+\begin{definition}[Cardinality with AC]
+\label{def:cardinalityAC}
+The cardinality of a set $A$ is the smallest ordinal in bijection with $A$, 
+Assuming well ordering is essential to this definition.
+\end{definition}
+
+\begin{definition}[Scott's cardinality]
+\label{def:cardinalityAC}
+The cardinality of a set $A$ is the set of all sets in mutal injection with $A$ that also have 
+minimal rank. Bijection clearly implies mutual injection. The Bernstein's theorem (theorem
+\ref{thm:Bernstein}) states that if there is a mutual injection between two sets, then there is a
+bijection between them, but right now, we can't prove it yet, so we will stick with this definition 
+(which is also indipendent from the AC). \\
+\end{definition}
+
+\begin{definition}[Cardinality comparison]
+We can compare cardinalities using $\leq$:
+
+$$ |A| \leq |B| \iff \exists f : A \rightarrow B \;\;\texttt{injective} $$
+\end{definition}
+
+\begin{definition}[Cardinal sum]
+We can define the sum for cardinal arithmetic as the following operation, which 
+is defined as the cardinality of the "disjoint union":
+
+$$ |A| + |B| = | (\{0\} \times A) \cup (\{1\} \times B) | $$
+\end{definition}
+
+\begin{definition}[Cardinal product]
+We can define the sum for cardinal arithmetic as the following operation, which 
+is defined as the cardinality of the set product:
+
+$$ |A| \times |B| = | A \times B | $$
+\end{definition}
+
+
+\begin{definition}[Cardinal exponentiation]
+We can define the sum for cardinal arithmetic as the following operation, which 
+is defined as the cardinality of the set of all functions having domain and codomain 
+as the operands:
+
+$$ |A|^{|B|} = | { f : B \rightarrow A } | $$
+\end{definition}
+    
+    
+Please be very aware that using the definition of cardinality of a given set as the 
+smallest ordinal in bijection with such set, you are still supposed to use the 
+cardinal arithmetic operations defined above. Ordinal arithmetic is not the same as
+cardinal arithmetic, and, since not every ordinal is a cardinal, we can't use the
+ordinals arithmetic operations on cardinals. For example $\omega \neq \omega + 1$ but
+$|A| + 1 = |A|$ for every set $A$ in bijection with omega. \\
+
+\newpage
