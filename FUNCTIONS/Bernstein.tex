@@ -1,0 +1,98 @@
+\subsection{Bernstein's theorem}
+One of the most impressive results in set theory is the so-called Bernstein's theorem. The Bernstein 
+theorem basically states that even if we might not be able to exibit a bijection between two sets, such 
+bijection must exist under certain conditions. This will later be useful to study the so-called "cardinality" of 
+a set. \\
+
+\begin{theorem}[Bernstein's theorem]
+    Given two sets $A$ and $B$, if there is an injection from $f : A \rightarrow B$ and an 
+    injection from $g : B \rightarrow A$, then there is a bijection between the two.
+\end{theorem}
+\begin{proof}
+    First, define the following entities (needed for the construction of the bijection):
+
+    $$ A_0 = A - \vv{g}(B)            $$ 
+    $$ A_{n+1} = \vv{g}(\vv{f}(A_n))  $$ 
+    $$ A_{\infty} = \bigcup A_i       $$ \\
+
+    
+    First of all, we need to understand that $g : B \rightarrow A$ is an injection, 
+    thus the very same function can be treated as a bijection when the codomain is
+    restricted to the image of the domain. We can write it in symbols with the 
+    following formula: \\
+
+    $$ g : B \rightarrow A \quad\texttt{injection} 
+    \Rightarrow g : B \rightarrow \vv{g}(B) \quad\texttt{bijection} $$ \\
+
+    Since $g$ is a bijection, we can claim that $g^{-1} : \vv{g}(B) \rightarrow B $ 
+    exists and is a bijection. Thus, once again, we can write the statement in 
+    symbols as the following formula: \\
+
+    $$ g : B \rightarrow A \quad\texttt{injection} 
+    \Rightarrow g^{-1} : \vv{g}(B) \rightarrow A \quad\texttt{bijection} $$ \\
+
+    We can rewrite it subsituting $\vv{g}(B)$ with $A - A_0$, since that's the very
+    definition of $A_0$:
+
+    $$ g : B \rightarrow A \quad\texttt{injection} 
+    \Rightarrow g^{-1} : (A - A_0) \rightarrow A \quad\texttt{bijection} $$ \\
+
+    We can finally restrict the domain of $g^{-1}$ to the set $A - A_{\infty}$, which 
+    is a subset of $A - A_0$, hence we can write the following statement:
+
+    $$ g : B \rightarrow A \quad\texttt{injection} 
+    \Rightarrow g^{-1} : (A - A_{\infty}) \rightarrow A \quad\texttt{injection} $$ \\
+
+    \newpage
+
+    We can construct the bijection $h : A \rightarrow B$ and prove that it is 
+    indeed a bijection (we might not be able to use it to actually compute the 
+    value of $h(x)$ since, in order to do it, we might need infinite computation
+    power, but we can prove that at least it exists):
+
+    \begin{equation*}
+        h(x) = 
+        \begin{cases*}
+            f(x) & if \( x \in A_{\infty} \)  \\
+            g^{-1}(x) & otherwise
+        \end{cases*}
+    \end{equation*} \\
+
+
+    We can also observe that $g : B \rightarrow A - A_{\infty}$ is also a bijection since $A - A_{\infty}$ is a subset of 
+    $A - A_0$, hence $h$ is also a bijection for all $x \in A - A_{\infty}$ due to its very construction. \\
+
+    We can prove that $h$ is an injection by proving that $h(x_1) = h(x_2)$ implies $x_1 = x_2$. We have to 
+    reason about two cases, both of which leads to injectivity.
+
+    $$ \forall x_1, x_2 \in A_{\infty} [ h(x_1) = f(x_1) = f(x_2) = h(x_2) \Rightarrow x_1 = x_2 ] $$
+    $$ \forall x_1, x_2 \notin A_{\infty} [ h(x_1) = g^{-1}(x_1) = g^{-1}(x_2) = h(x_2) \Rightarrow x_1 = x_2 ] $$ \\
+    
+    Please notice that a scenario where $x_1$ and $x_2$ are not either both in $A_{\infty}$ or both are not is actually impossible under 
+    the assumption that $h(x_1) = h(x_2)$, because:
+
+    $$ \forall x_1 \in A_{\infty},\; \exists x_2 \in A \Rightarrow [ f(x_1) = h(x_1) = h(x_2) = g^{-1}(x_2) ] $$
+    $$ \therefore f(x_1) = g^{-1}(x_2) \Rightarrow  g(f(x_1)) = x_2 \Rightarrow x_2 \in A_{\infty}           $$
+
+    We can also prove that $h$ is a suriection by proving that for every $y \in B$ there is an $x \in A$ such that $h(x) = y$. To 
+    find such $x$, we can reason about the following two cases:
+
+    $$ g(y) \notin A_{\infty} \Rightarrow h(g(y)) = g^{-1}(g(y)) = y $$
+    $$ g(y) \in A_{\infty} \Rightarrow g(y) \in \vv{g}(\vv{f}(A_n)) \Rightarrow f(\zeta(\vv{f}(A_n))) = y$$ \\
+
+    It's worth noting that $g(y) \in A_{\infty}$ implies that $g(y) 
+    \in A_{\infty} - A_0$ since $A_0$ is litterally defined as
+    $A - \vv{g}(B)$. Hence, we can assume $g(y) \in A_{n + 1}$ \\
+
+    By the definition of $A_{n + 1} = \vv{g}(\vv{f}(A_{n}))$, we can say that 
+    $x = g(y) \in A_{n + 1}$ implies that $y = \vv{f}(A_n)$, which means we can 
+    claim that the following statement holds true:
+
+    Please notice that we are once again assuming a choice function $\zeta$ that returns a single element of a given set exist, 
+    while it's easy to prove that it exist case by case, its existence cannot be proved in general. This means that the 
+    Bernstein's theorem is not provable in ZF set theory alone, but it is provable in ZFC set theory (ZFC + AC). \\
+
+
+
+
+\end{proof}

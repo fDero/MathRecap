@@ -1,0 +1,55 @@
+\subsection{Functions and power-sets}
+Power-sets are a very important concept in set theory. The set $P(A)$ is the set of all 
+subsets of a given set $A$, and it's called power-set. The existence of a power-set 
+for a given set $A$ is guaranteed by the axiom of power-set. This is done because we can't 
+express the power-set as $P(A) = \{X \in \mathbb{U} : X \subseteq A\}$, because we can't find 
+an upper bound $\mathbb{U}$ for every power-set, hence we would violate axiom of schema-specification. 
+
+\begin{theorem}
+    Given a set $A$, the power-set $P(A)$ is in bijection with the set of all the 
+    functions $c : A \rightarrow \{0,1\}$. The function $c$ associated with a given subset $S$ is called 
+    the characteristic function of the subset $S$.
+\end{theorem}
+\begin{proof}
+    We can exibit a bijection $f$ between every possible $S$ subset of $A$ and every possible
+    function $c : A \rightarrow \{0,1\}$ constructed as follows:
+
+    \begin{equation*}
+        f(S) = c(x) = 
+        \begin{cases*}
+            1 & if \(x \in S\)  \\
+            0 & otherwise
+        \end{cases*}
+    \end{equation*}
+
+    We can show that is a bijection by also exibiting the inverse function $f^{-1}$
+    constructed as:
+
+    $$ f^{-1}(c) = \{ x \in A : c(x) = 1 \} $$
+    $$ f^{-1}(c) = \cev{c}(\{1\}) $$
+\end{proof}
+
+Please, notice that we must be able to construct the set of all functions in 
+the form $ f : A \rightarrow B $ to be able to make sense out of the previous
+theorem. We can do it respecting the axiom of schema-specification by using 
+the formal definition of function as a set of tuples for which every element 
+in the domain only appear once. \\
+
+$$ \mathbb{F}_{A \rightarrow B} = \{ f \in P(A \times B) : (a, y), (b, y) \in f \Rightarrow a = b \} $$ \\
+
+\begin{theorem}[Cantor's theorem]
+    There is no suriection from a set to its power-set.
+\end{theorem}
+\begin{proof}
+    We can prove this by contradiction. Let's assume that there is a suriection $f : A \rightarrow P(A)$.
+    We can construct the set $S = \{ x \in A : x \notin f(x) \}$. By the definition of suriection, we know that 
+    there is an element $y \in A$ such that $f(y) = S$. Now we can ask ourselves if $y$ is in $S$ or not:
+
+    $$  y \in S \iff y \in f(y) \iff y \notin S  $$ \\
+
+    Hence, we conclude that there is no suriection from a set to its power-set, since 
+    that what originated the contradiction. By assuming that there is no $y$ such that $f(y)$ is 
+    equal to the set $S$, we can escape this apparent paradox hence we conclude that no function 
+    from a set to its power-set can ever be a suriection. \\
+\end{proof}
+
