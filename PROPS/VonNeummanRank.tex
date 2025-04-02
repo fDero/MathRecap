@@ -9,10 +9,10 @@ terms of the Von Neumann hierarchy as follows:
     obey the following construction:
     
     \begin{equation*}
-        V_i = \begin{cases}
-            \varnothing            & \text{if } i = 0 \\
-            \bigcup P(V_{j < i})   & otherwise \\
-        \end{cases}
+        V_i = \begin{dcases}
+            \varnothing            & \text{if}\;\; i = 0 \\
+            \bigcup_{j < i} P(V_j) & \text{otherwise} \\
+        \end{dcases}
     \end{equation*}
 \end{definition}
 
