@@ -1,0 +1,22 @@
+\subsection{Hartogs' ordinal}
+The Hartogs' ordinal is a special ordinal that can be used to prove the existence of a 
+well ordering for any set under certain assumptions. It can be defined using axioms of ZF alone. 
+Specifically, its existence does not depend on the Axiom of Choice (AC). \\
+
+\begin{definition}[Hartogs' ordinal]
+    The Hartogs' ordinal $\alpha$ of a set $A$ is the smallest ordinal $\alpha$ such that there 
+    exists an injection from $A$ to $\alpha$. In other words, it is the smallest ordinal that is 
+    "larger" than $A$.
+\end{definition}
+
+\begin{theorem}[Hartogs' theorem]
+    For every set $A$ there exists an Hartogs' ordinal.
+\end{theorem}
+\begin{proof}
+    If $A$ is empty, then the Hartogs' ordinal is $0$. Otherwise, we can construct the Hartogs'
+    ordinal by taking the set of all ordinals that are injectable into $A$. The set that is 
+    constructed this way is itself an ordinal, and since it doesn't belong to the set itself 
+    it must not be injectable into $A$. Therefore, it is the Hartogs' ordinal of $A$.
+\end{proof}
+
+\newpage

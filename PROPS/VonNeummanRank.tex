@@ -1,0 +1,33 @@
+\subsection{Von Neumann rank}
+We can construct an hierarchy of sets, well ordered with respect with $\subseteq$, 
+called the Von Neumann hierarchy, in such a way that any well-formed set in ZF is subset of 
+at least one of the sets in this hierarchy. We can define the Von Neumann rank of a set $A$ in 
+terms of the Von Neumann hierarchy as follows:
+
+\begin{definition}[Von Neumann universe]
+    For every ordinal $i$ we define the Von Neumann universe $V_i$ as the set which 
+    obey the following construction:
+    
+    \begin{equation*}
+        V_i = \begin{cases}
+            \varnothing            & \text{if } i = 0 \\
+            \bigcup P(V_{j < i})   & otherwise \\
+        \end{cases}
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}[Von Neumann theorem]
+    Every set $S$ is subset of some universe $V_i$
+\end{theorem}
+\begin{proof}
+    Every entity in set theory is a set, moreover. Every set is either empty or is a set containing 
+    other sets. Let's proceed by induction. The base case is
+    $V_0$ which is the empty set. Assume all the element of some set $S$ are subsets of  
+    some Von Neumann universe $V_j$, we can assert that $S$ is subset of $V_{j+1}$ by 
+    the definition of $V_{j+1}$.
+\end{proof}
+
+\begin{definition}[Von Neumann rank]
+    For every set $S$ we can define $r(S)$ the Von Neumann rank of $S$ as the smallest
+    ordinal $i$ such that $S \subseteq V_i$.
+\end{definition}
