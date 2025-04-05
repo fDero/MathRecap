@@ -1,0 +1,144 @@
+
+\subsection{Operations}
+"Operation" is just a fancy term to refer functions in the context of algebraic structures. An operation can be either 
+internal or external. An internal operation is a function that takes some elements from the set and returns an element from the set. Internal 
+operations are the most common type of operations in algebraic structures.
+
+\begin{definition}
+    An internal binary operation $\perp$ over a set $S$ is a function $\perp: S \times S \rightarrow S$
+\end{definition}
+
+\begin{definition}
+    An external binary operation $\cdot$ over the pair of sets $K$, $V$ is a function defined as $\cdot: K \times V \rightarrow V$, note 
+    that this definition encompasses the case where $K = V$ hence its a generalization of the internal binary operation.
+\end{definition}
+
+\begin{definition}
+    An unary operation $!$ over a set $S$ is a function $!: S \rightarrow S$, note that 
+    an unary operation can never be external so specifying that it is internal is redundant.
+\end{definition}
+
+\begin{definition}
+    With respect to a binary internal operation $\perp$ over a set $S$, an element $\epsilon \in S$ is said to be the left-identity-element of 
+    the operation $\perp$ if $\forall x \in S: \epsilon \perp x = x$.
+\end{definition}
+
+\begin{definition}
+    With respect to a binary internal operation $\perp$ over a set $S$, an element $\delta \in S$ is said to be the right-identity-element of 
+    the operation $\perp$ if $\forall x \in S: x \perp \delta = x$.
+\end{definition}
+
+Given these very few definitions we can already prove some interesting statements about the properties of the identity elements of an operation. In 
+particular, we can prove that if a set has both a left-identity-element and a right-identity-element, then they are the are both simultaneously the
+left-identity-element and the right-identity-element of the operation. We can also prove that under these circumstances the two elements are not distinct, meaning 
+that indeed there can only be one identity element for a given operation both on the left and on the right. This property is very important in the study of algebraic
+structures, as it allows us to define the concept of identity element in a more general way.
+
+\newpage
+
+\begin{lemma}
+    If two elements $\epsilon, \delta \in S$ exist such that they are left-identity-element and right-identity-element of the operation 
+    respectively, then $\epsilon = \delta$.
+\end{lemma}
+\begin{proof}
+    Let $\epsilon \in S$ be the left-identity-element $\perp$, then let $\delta \in S$ be the right-identity-element of $\perp$. The following statements 
+    are then true by the very definition of left and right identity elements:
+
+    \begin{align*}
+        \forall x \in S: \epsilon \perp x = x \\
+        \forall x \in S: x \perp \delta = x
+    \end{align*}
+
+    By the definition of the right-identity-element, we can substitute $x = \epsilon$. By the definition of the 
+    left-identity-element, we can also substitute $x = \delta$. Ending up with:
+
+    \begin{align*}
+        \epsilon \perp \delta = \epsilon \\
+        \epsilon \perp \delta = \delta
+    \end{align*}
+
+    By the transitive property of equality, we can then conclude that $\epsilon = \delta$. Note that this means that 
+    the left-identity-element and the right-identity-element are the same element, and that the element itslef is therefore 
+    the identity element of the operation $\perp$ on both sides (this holds true regardless of wether $\perp$ has any other property or not).
+
+    \begin{align*}
+        \epsilon = \epsilon \perp \delta = \delta
+    \end{align*}
+
+\end{proof}
+
+
+\begin{definition}
+    With respect to a binary internal operation $\perp$ over a set $S$, an element $\hat{a}$ is said to be the left-inverse-element of
+    an element $a \in S$ if $\hat{a} \perp a = \epsilon$ where $\epsilon$ is the left-identity-element of the operation $\perp$.
+\end{definition}
+
+\begin{definition}
+    With respect to a binary internal operation $\perp$ over a set $S$, an element $\bar{a}$ is said to be the right-inverse-element of
+    an element $a \in S$ if $a \perp \bar{a} = \delta$ where $\delta$ is the right-identity-element of the operation $\perp$.
+\end{definition}
+
+With these definitions we can now go ahead and prove an interesting property of the inverse elements of an operation. In particular, we can prove that
+if an element has both a left-inverse-element and a right-inverse-element, then the two inverse-elements are the same under the assumption that the operation is 
+associative, we can also prove that the inverse element is unique. \\
+
+Please note how this also automatically implies that the identity element is unique since 
+the very existence of both a left and a right inverse element implies that there exists both a left and a right identity element, which itself implies that 
+the two elements are the same and therefore unique. 
+
+\newpage
+
+\begin{lemma}
+    if an element has both a left-inverse-element and a right-inverse-element with respect to an associative operation, 
+    then the two inverse-elements are the same.
+\end{lemma}
+\begin{proof}
+    Let $\hat{x}$ be the right-inverse-element of $x$ and $\bar{x}$ be the left-inverse-element of $x$ with respect to an associative operation $\perp$.
+    \begin{align*}
+        \hat{x} &= \epsilon \perp \hat{x}           \\
+                &= (\bar{x} \perp x) \perp \hat{x}  \\
+                &= \bar{x} \perp (x \perp \hat{x})  \\
+                &= \bar{x} \perp \epsilon           \\
+                &= \bar{x}                          \\
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    An element $\theta \in S$ is said to be the left-absorbing-element of a binary internal operation $\perp$ if $\forall x \in S: \theta \perp x = \theta$.
+\end{definition}
+
+
+\begin{definition}
+    An element $\zeta \in S$ is said to be the right-absorbing-element of a binary internal operation $\perp$ if $\forall x \in S: x \perp \zeta = \zeta$.
+\end{definition}
+
+\begin{lemma}
+    If a given binary internal operation $\perp$ has both a left-absorbing-element and a right-absorbing-element, then the two elements are the same.
+\end{lemma}
+\begin{proof}
+    Let $\theta$ be the left-absorbing-element and $\zeta$ be the right-absorbing-element of the operation $\perp$ for a given binary 
+    internal operation $\perp$. Then the following statements are true by the very definition of left and right absorbing elements:
+
+    \begin{align*}
+        \forall x \in S: \theta \perp x = \theta \\
+        \forall x \in S: x \perp \zeta = \zeta
+    \end{align*}
+
+    By the definition of the right-absorbing-element, we can substitute $x = \theta$. By the definition of the
+    left-absorbing-element, we can also substitute $x = \zeta$. Ending up with:
+
+    \begin{align*}
+        \theta \perp \zeta = \theta \\
+        \theta \perp \zeta = \zeta
+    \end{align*}
+
+    By the transitive property of equality, we can then conclude that $\theta = \zeta$. Note that this means that 
+    the left-absorbing-element and the right-absorbing-element are the same element, and that the element itslef is therefore 
+    the absorbing element of the operation $\perp$ on both sides (this holds true regardless of wether $\perp$ has any other property or not).
+
+    \begin{align*}
+        \theta = \theta \perp \zeta = \zeta
+    \end{align*}
+\end{proof}
+
+\newpage

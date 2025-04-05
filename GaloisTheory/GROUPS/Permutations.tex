@@ -1,0 +1,109 @@
+\subsection{Permutations, symmetries and cycles}
+A permutation, is a bijective function from a set to itself. The set of all permutations of 
+a fine set $A$ is a group under the operation of composition. We will see how this group is 
+an extremely important object in Galois theory, as it is used to study the symmetries of the 
+roots of polynomial equations. 
+
+\begin{definition}[Permutation]
+A permutation of a set $A$ is a bijective function $\sigma: A \to A$. 
+\end{definition} \vspace{0.2em}
+
+\begin{definition}[Symmetric group]
+The set $Sn$ is the set of all the permutations of the set $\{1,2,\dots,n\}$. Please 
+notice that the such set is indeed isomorphic to the set of all permutations of the 
+set $A$, for every choice of $A$ such that it has finite cardinality $n$.
+\end{definition} \vspace{0.4em}
+
+We can indicate a permutation $\sigma$ in $Sn$ with the following notation (matrix notation):
+
+$$ \sigma = \begin{pmatrix} 
+    1 & 2 & 3 & \dots & n \\ 
+    \sigma(1) & \sigma(2) & \sigma(3) & \dots & \sigma(n) 
+\end{pmatrix} $$ \vspace{0.2em}
+
+\begin{definition}[Cycle]
+A cycle of length $k$ is a permutation $\sigma$ such that 
+every element gets mapped onto itself after $k$ mappings (Repeatedly applying
+the permutation $\sigma$ $k$ times, can be written as $ \sigma^{k}$ since 
+in a group the operation is typically see as multiplication-alike):
+
+$$ \sigma^{k}(n) = n $$ \vspace{0.2em}
+\end{definition} \vspace{0.2em}
+
+We can indicate a cycle $\tau$ of length $k$ with the following notation (tuple notation):
+
+$$ \tau = (a_0,\; a_1,\; \dots,\; a_k ) $$ \vspace{0.2em}
+
+Which represents the permutation described by the following case-by-case definition:
+
+$$ \tau(x) = \begin{cases}
+        a_{i+1} & \text{if } x = a_i \land x \neq k \\
+        a_1 & \text{if } i = k \\
+        x & \text{otherwise } \\
+    \end{cases} 
+$$ \vspace{0.2em}
+
+\newpage
+
+Notice that $(a_0)$ can be written as $(a_0,\; a_0)$, and that's the identity in every $S_n$. \\
+
+\begin{lemma} 
+    $S_n$ forms the group $(S_n, \circ)$ under the operation of composition.
+\end{lemma} 
+\begin{proof}
+    It's clearly closed, since the product of two permutations is a
+    permutation. The identity permutation is the one that maps every element to itself,
+    and since every permutation is a bijection, it has an inverse. Also, by the definition of
+    composition, the operation is associative. Thus, $S_n$ is a group under the operation of
+    composition.
+\end{proof} \vspace{0.2em}
+
+\begin{lemma}
+\label{PermutationsCancellationLaw}
+    Given $S_n \subseteq S_{n+1}$, we can express every permutation in $S_{n+1}$ as the 
+    product of a permutation in $S_n$ and a length-2-cycle in the form $(n+1,\;\; 1 \leq i \leq n)$.
+\end{lemma}  
+\begin{proof}
+    Let's denote the length-2-cycle as $\beta_{i} = (n+1,\; i)$. There exist then exactly $n$ 
+    different functions $f_i(\sigma) = \sigma \circ \beta_{i}$, where $i$ is less then or equal 
+    to $n$. \\
+
+    Now, observe that the function $f$ is injective, since the cancellation law holds for
+    the group of permutations just like any other group (lemma \ref{CancellationLaw}).
+
+    $$ f_i(\sigma) = f_i(\tau) \Rightarrow \sigma \circ \beta = \tau \circ \beta $$
+    $$ \Rightarrow \sigma \circ \beta \circ \beta^{-1} = \tau \circ \beta \circ \beta^{-1} $$
+    $$ \Rightarrow \sigma = \tau $$ \vspace{0.2em}
+
+    Also notice that the images of the function $f_i$ are all distinct since they all 
+    maps to element that have been multiplied by a different factor which is not in the domain. Thus: \\
+    
+    $$ |\bigcup_{1 \leq i \leq n} \vv{f_i}(S_i) | = \sum_{1 \leq i \leq n} |\vv{f_i}(S_n)| 
+    = (n + 1) \cdot n! = (n+1)! $$ \vspace{0.2em}
+
+    For finte sets, we can say that $H \subseteq G$ is equal to $G$ when $|H| = |G|$, Hence the union 
+    of all the products of permutations in $S_n$ with a cycle in $S_{n+1}$ is itself just $S_{n+1}$.
+\end{proof} \vspace{0.2em}
+
+\begin{theorem}[Permutations-Factorization] 
+\label{PermutationsFactorization}
+    Every permutation can be expressed as a product of cycles 
+    of length $2$, which we call prime-factors of the permutation.
+\end{theorem} 
+\begin{proof}
+    Let's proceed by 
+    induction on the number of elements in the set $A$. The base case is when $A$ has only 
+    two elements is trivially true, since the only permutations are the $(1,2)$ cycle and 
+    the identity, which can be expressed as the product $(1,2) \circ (2,1)$. \\
+
+    Now, for every permutation in $Sn$ assume that a factorization exists. Observe that 
+    that every permutation in $Sn$ can be expressed as a product of length-cycles, and such product 
+    of cycles also describes a permutation in $S_{n+1}$. \\
+    
+    Since by the result of lemma \ref{PermutationsCancellationLaw} we show that 
+    $S_{n+1}$ can itself be described as the group of all the products of permutations in 
+    $S_{n}$ with a length-2-cycle, every permutation in $S_{n+1}$ is herby the product of 
+    a sequence of length-2-cycles. \\
+\end{proof} \vspace{0.2em}
+
+\newpage

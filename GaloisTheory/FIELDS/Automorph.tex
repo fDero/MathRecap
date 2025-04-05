@@ -1,0 +1,108 @@
+\subsection{Automorphisms}
+The term automorphism, depending on the context, can refer either to groups-automorphisms, 
+ring-automorphisms, or field-automorphisms. In this section, we will focus on ring-automorphisms, since they 
+are a special case of field-automorphisms. The main idea of galois theory is to study automorphisms of 
+the field $(\mathbb{Q}, +, \cdot)$ and its extensions. What we mean by extensions will be made clear in the
+next sections. \\
+
+\begin{definition}[Ring-Automorphisms]
+A ring-automorphism for the ring $(A, +, \cdot)$ is a bijective map $\phi: A \to A$ such that for all $a, b \in A$, 
+the basic properties of a ring are preserved, meaning that $\phi$ act as a linear mapping with respect to the ring operations:
+
+$$ \phi(a + b) = \phi(a) + \phi(b) $$
+$$ \phi(ab) = \phi(a)\phi(b) $$ \vspace{0.2em}
+\end{definition}
+
+\begin{lemma}[Zero-lemma]
+For any automorphism $\phi$ of a ring $(A, +, \cdot)$, we have that:
+\end{lemma}
+\begin{proof}
+$$ \phi(0) = \phi(0 \cdot a) = \phi(0) \phi(a) $$
+$$ \therefore \phi(0) = 0 $$
+\end{proof}
+
+
+\begin{lemma}[Unit-lemma]
+For any automorphism $\phi$ of a ring $(A, +, \cdot)$, we have that:
+\end{lemma}
+\begin{proof}
+$$ \phi(a) = \phi(1 \cdot a) = \phi(1) \phi(a) $$
+$$ \therefore \phi(1) = 1 $$
+\end{proof}
+
+
+\begin{lemma}[Fixed-integers]
+Assuming that the operations are defined canonically, for any ring $(A, +, \cdot)$ the 
+set $A \cap \mathbb{Z}$ is fixed under any automorphism $\phi$, meaning that 
+for every element in $A$ that is also an integer, we have that $\phi$ act as the identity (this can 
+be proved by induction, and can be extend to the rationals as well, as shown in lemma \ref{lem:fixedRationals}):
+\end{lemma}
+\begin{proof}
+$$ \phi(n \in \mathbb{Z}) = \phi(1 + 1 + \dots) = \phi(1) + \phi(1) + \dots = 1 + 1 + \dots = n $$
+$$ \therefore \forall n \in \mathbb{Z}\;\; \phi(n) = n $$
+\end{proof}
+
+\newpage
+
+\begin{lemma}[Fixed-rationals]
+\label{lem:fixedRationals}
+Assuming that the operations are defined canonically, for any ring $(A, +, \cdot)$ the set $A \cap 
+\mathbb{Q}$ is fixed under any automorphism $\phi$, meaning that 
+for every element in $A$ that is also a rational number, we have that $\phi$ act as the identity (this result 
+uses of the fact that every rational can be written as a fraction of two integers):
+\end{lemma}
+\begin{proof}
+$$ \phi(q \in \mathbb{Q}) = \phi(\frac{a}{b}) = \phi(a)\;\phi(\frac{1}{b}) = a\;\phi(\frac{1}{b}) $$
+$$ \phi(1) = \phi(\frac{b}{b}) = \phi(b)\;\phi(\frac{1}{b}) = b\;\phi(\frac{1}{b}) $$
+$$ \therefore \phi(\frac{1}{b}) = \frac{1}{b} $$
+$$ \therefore \phi(q) = \phi(\frac{a}{b}) = \frac{a}{b} = q $$
+\end{proof}
+
+\begin{theorem}
+For every extension field $\mathbb{Q}(r_1, r_2, \dots, r_n)$ with a finite number of algebraic extension-elements, every automorphism $\phi$ 
+can only map $r_i$ to $r_j$, because roots of polynomials gets mapped to other roots of the same polynomial.
+\end{theorem}
+\begin{proof}
+    Let $f(x) = a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0$ be a polynomial with rational coefficients, 
+    and let $r_1, r_2, \dots, r_n$ be the roots of $f(x)$, some of them might be irrational, hence not 
+    fixed by any automorphism $\phi$. Nonetheless, we can assume the following:
+ 
+    \begin{align*}
+        \phi(f(x)) 
+        &= \phi(a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0)                   \\
+        &= \phi(a_nx^n) + \phi(a_{n-1}x^{n-1}) + \dots + \phi(a_1x) + \phi(a_0) \\
+        &= a_n\phi(x^n) + a_{n-1}\phi(x^{n-1}) + \dots + a_1\phi(x) + a_0       \\
+        &= f(\phi(x))                                                           \\
+    \end{align*}
+
+    Thus, we can claim that $\phi$ maps roots of $f(x)$ to roots of $f(x)$, completing the proof. \\
+\end{proof}
+
+\begin{lemma}
+Please not that for every rational field extension $\mathbb{Q}(r_1, r_2, \dots, r_n)$, we can uniquely
+characterize the automorphisms of the field by how they map the extension-elements $r_i$ to other
+extension-elements $r_j$. In particular, for every rational field extension $\mathbb{Q}(r)$ we can 
+easily see that the value of $\phi(x)$ entirely depends on the value of $\phi(r)$, since we can
+write $\phi(x)$ as the following linear combination:
+
+$$ \phi(a + rb) = \phi(a) + \phi(rb) = \phi(a) + \phi(r)\;\phi(b) = a + \phi(r)\;b $$
+\end{lemma}
+
+\newpage
+
+Since for every rational field extension $\mathbb{Q}(r_1, r_2, \dots, r_n)$, we can uniquely characterize 
+all the automorphisms of the field by how they map the extension-elements $r_i$ to other
+extension-elements $r_j$, since we know that rationals are fixed, we can conclude that the set of 
+all possible automorphisms of the field $\mathbb{Q}(r_1, r_2, \dots, r_n)$ is in bijection with the
+set of all possible permutations of the non-rationals extension-elements $r_i$. \\
+
+Thus $\mathbb{Q}(\sqrt{2})$, being the extension 
+that contains the roots of the polynomial $x^2 - 2$, which are $\sqrt{2}$ and $-\sqrt{2}$, supports 
+just these two automorphisms: \\
+
+$$ \phi_1(a + b\sqrt{2}) = a + b\sqrt{2} $$
+$$ \phi_2(a + b\sqrt{2}) = a - b\sqrt{2} $$ \\
+
+We found exactly two automorphisms, which is $2!$, which is exactly the number of
+permutations of two roots. In general, for $n$ non-rational roots, we can find exactly $n!$ automorphisms, 
+which is the number of permutations of $n$ objects. \\
