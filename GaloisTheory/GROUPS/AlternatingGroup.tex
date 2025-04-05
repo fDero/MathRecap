@@ -138,3 +138,19 @@ centrality implies that $ghg^{-1} = h$, while the definition of normality only r
 $ghg^{-1} = h' \in H$. So, if $H$ is not central, it is possible for some permutations in 
 $H$ to not commute with some permutations in $G$. In fact $A_4$ is normal and not central. \\
 
+\begin{lemma}
+    For every $H$ subgroup of $G$, begin central implies being abelian.
+\end{lemma}
+\begin{proof}
+    Let $H$ be a central subgroup of $G$. Then, write down the definition of centrality:
+
+    $$ H \texttt{ is central for } G \iff \forall h \in H\;\;\forall g \in G\;\; gh = hg $$
+
+    Since $H$ is a subgroup of $G$, we have $H \subseteq G$, so we can restrict the 
+    "for all" quantifier to just $H$, turning the definition of centrality into the 
+    definition of an abelian group:
+
+    $$ H \texttt{ is central for } G \Rightarrow \forall h,g \in H\;\; gh = hg $$
+\end{proof} \vspace{0.2em}
+
+\newpage
