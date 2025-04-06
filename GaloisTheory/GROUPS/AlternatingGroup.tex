@@ -150,7 +150,109 @@ $S_n$ is not Galois-solvable for $n \geq 5$.
     of cardinality $|A_n|$ which implies that $|H| = 2|A_n| = |S_n|$ Hence $H$ is itself just $S_n$. \\
 
 \end{proof} 
-\vspace{0.2em}
+\vspace{0.4em}
+
+The following results are headed towards the proof of the simplicity of $A_n$ for $n \geq 5$. The 
+way we will prove the simplicity of $A_n$ is by showing that every even permutation in $A_n$ can 
+be expressed as a product of length-3-cycles for $n \geq 4$. Also, we will prove that every 
+even permutation in $A_n$ can be expressed as a single length-3-cycle for $n \geq 5$. We will then 
+say that every normal subgroup of $S_n$ that contains a length-3-cycle must contain all
+length-3-cycles, hence every non-trivial normal subgroup of $A_n$ will contain at least 
+one length-3-cycle, hence it will contain all of them, and so with their products, thus it 
+will contain all even permutations, hence it will be equal to $A_n$. \\  
 
 \newpage
+
+\begin{lemma}
+    Every even permutation in $A_n$ of length 2 can be expressed 
+    as a product of length-3-cycles for $n \geq 4$.
+\end{lemma}
+\begin{proof}
+    We can express every even permutation of length 2 in the form $(a,b) \circ (b,c)$ 
+    as the product of two length-3-cycles $(a,b,c) \circ (1)$. So, without loss of generality,
+    we can focus just on permutations of the form $(a,b) \circ (c,d)$.\\
+
+    We can easily show that every permutation in the form $(a,b) \circ (b,c)$ can be 
+    expressed as $(a, b, c)$, as shown below in figres \ref{fig:SwapTwo} and 
+    \ref{fig:SwapTwoAs3Cycles} \\
+\end{proof} \vspace{0.2em}
+
+\begin{figure}[H]
+\label{fig:SwapTwo}
+    \centering
+    \begin{tikzpicture}
+        
+        \node (1-1) at (0, 0) [circle, draw] {1};
+        \node (1-2) at (2, 0) [circle, draw] {2};
+        \node (1-3) at (4, 0) [circle, draw] {3};
+        \node (1-4) at (6, 0) [circle, draw] {4};
+        
+        \node (2-1) at (0, -2) [circle, draw] {2};
+        \node (2-2) at (2, -2) [circle, draw] {1};
+        \node (2-3) at (4, -2) [circle, draw] {4};
+        \node (2-4) at (6, -2) [circle, draw] {3};
+
+        \draw[->] (1-1) -- (2-2);
+        \draw[->] (1-2) -- (2-1); 
+
+        \draw[->] (1-3) -- (2-4);
+        \draw[->] (1-4) -- (2-3); 
+
+    \end{tikzpicture}
+    \caption{The permutation $[(1,2) \circ (3,4)]$ }
+
+\end{figure}
+
+\begin{figure}[H]
+\label{fig:SwapTwoAs3Cycles}
+    \centering
+    \begin{tikzpicture}
+        
+        \node (1-1) at (0, 0) [circle, draw] {1};
+        \node (1-2) at (2, 0) [circle, draw] {2};
+        \node (1-3) at (4, 0) [circle, draw] {3};
+        \node (1-4) at (6, 0) [circle, draw] {4};
+        
+        \node (2-1) at (0, -2) [circle, draw] {3};
+        \node (2-2) at (2, -2) [circle, draw] {1};
+        \node (2-3) at (4, -2) [circle, draw] {2};
+        \node (2-4) at (6, -2) [circle, draw] {4};
+
+        \node (3-1) at (0, -4) [circle, draw] {2};
+        \node (3-2) at (2, -4) [circle, draw] {1};
+        \node (3-3) at (4, -4) [circle, draw] {4};
+        \node (3-4) at (6, -4) [circle, draw] {3};
+
+        \draw[->] (1-1) -- (2-2);
+        \draw[->] (1-2) -- (2-3);
+        \draw[->] (1-3) -- (2-1);
+        \draw[dotted, ->] (1-4) -- (2-4);
+        
+        \draw[->] (2-1) -- (3-4);
+        \draw[dotted, ->] (2-2) -- (3-2);
+        \draw[->] (2-4) -- (3-3);
+        \draw[->] (2-3) -- (3-1); 
+ 
+
+    \end{tikzpicture}
+    \caption{The permutation $[(1,2,3) \circ (1,4,3)]$ }
+
+\end{figure} \vspace{0.4em}
+
+\begin{lemma}
+    Every even permutation in $A_n$ of arbitraty length can be expressed 
+    as a product of length-3-cycles for $n \geq 4$.
+\end{lemma}
+\begin{proof}
+    By definition, every even permutation of length $2k$ is a product of $2k$ length-2-cycles, which 
+    are called prime-factors. We can consider them pairwise and define every even permutation 
+    as a product of $k$ even permutations of length 2. Thanks to lemma \ref{lem:x} we can herby
+    express every even permutation of length $2k$ as a product of $k$ length-3-cycles,
+    thus proving the lemma. \\
+\end{proof} \vspace{0.2em}
+
+
+\newpage
+    
+
 
