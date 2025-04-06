@@ -60,7 +60,7 @@ will contain all even permutations, hence it will be equal to $A_n$. \\
     we can focus just on permutations of the form $(a,b) \circ (c,d)$.\\
 
     We can easily show that every permutation in the form $(a,b) \circ (b,c)$ can be 
-    expressed as $(a, b, c)$, as shown below in figres \ref{fig:SwapTwo} and 
+    expressed as the product of multiple legth-3-cycles as shown below in figres \ref{fig:SwapTwo} and 
     \ref{fig:SwapTwoAs3Cycles} \\
 \end{proof} \vspace{0.2em}
 
@@ -161,7 +161,7 @@ will contain all even permutations, hence it will be equal to $A_n$. \\
     In particular, such permutation $\pi$ exists and its defined by cases as shown below:
 
     \begin{equation*}
-        h(x) = 
+        \pi(x) = 
         \begin{cases*}
             a      & \text{if} \( x = i \)  \\
             b      & \text{if} \( x = j \)  \\
@@ -193,7 +193,20 @@ will contain all even permutations, hence it will be equal to $A_n$. \\
     permutations of this form are all length-3-cycles. \\ 
 \end{proof} \vspace{0.2em}
 
+We will state as a fact without proof that $A_5 and A_6$ are simple groups. In canonical group theory 
+courses such result gets formally proven, but we will not go into the details of such proof. Please 
+keep in mind that the proof of the simplicity of $A_5$ and $A_6$ is not necessary since 
+they are finite groups and it can be shown by brute-force that they have no non-trivial normal
+subgroups. Modern super-computers can easily compute every subgroup of $A_6$ and check it 
+effortlessly. Thus a formal proof not really necessary. \\
+
 \newpage
+
+To formally prove the simplicity of $A_n$, one could use either the Sylow's theorems, or 
+the Lagrange's theorem, or one could go case by case and observe that every even permutation 
+can being in a normal subgroup of $A_n$ implies that some other length-3-cycle must also be in
+such normal subgroup. The latter is expecially tedious. \\
+
 
 \begin{theorem}[Simplicity of $A_n$]
     $A_n$ is simple for $n \geq 5$.
@@ -223,4 +236,14 @@ will contain all even permutations, hence it will be equal to $A_n$. \\
     that $N$ contains all even permutations. Hence $N = A_{n+1}$. \\
 \end{proof} \vspace{0.2em}
     
+This proof in particular is attributed to the mathematician \textbf{Joseph Gallian}, and it's a much 
+more concise proof than the one given by \textbf{Galois} in his original paper. It is possible 
+to improve this proof by reducing the necessary assumptions to the fact that $A_5$ is simple, thus 
+ignoring the case of $A_6$. \\
+
+In the next chapter we will talk about Galois-solvibility of a given group, and how the fact that 
+$A_n$ is non-abelian and simple for $n \geq 5$ implies that the group $S_n$ is not 
+Galois-solvable for $n \geq 5$. This will later be used to prove that there is no such thing 
+as the quintic formula. \\
+
 \newpage
