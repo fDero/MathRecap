@@ -51,7 +51,6 @@ will contain all even permutations, hence it will be equal to $A_n$. \\
 \newpage
 
 \begin{lemma}
-    \label{lem:evenPermutationIsProductOfThreeCycles}
     Every even permutation in $A_n$ of length 2 can be expressed 
     as a product of length-3-cycles for $n \geq 4$.
 \end{lemma}
@@ -128,6 +127,7 @@ will contain all even permutations, hence it will be equal to $A_n$. \\
 \end{figure} \vspace{0.4em}
 
 \begin{lemma}
+    \label{lem:evenPermutationIsProductOfThreeCycles}
     Every even permutation in $A_n$ of arbitraty length can be expressed 
     as a product of length-3-cycles for $n \geq 4$.
 \end{lemma}
@@ -172,123 +172,55 @@ will contain all even permutations, hence it will be equal to $A_n$. \\
 \end{proof}
 
 \begin{lemma}
-\label{lem:everyEvenPermutationIsInSubgroupsOfAN}
-    Every normal subgroup $H \triangleleft S_n$ that contains an even permutation with exactly 2 
-    prime factors must contain at least one length-3-cycle given that $n \geq 5$.
+    If $\pi = (a,b,c)$ is a length-3-cycle, then $\sigma \circ \pi \circ \sigma^{-1} = (i,j,k)$
+    is also a length-3-cycle for every permutation $\sigma$ in $S_n$. 
 \end{lemma}
 \begin{proof}
-    Let $(a,b) \circ (c,d) \in H \triangleleft S_n$ be an even permutation. Since $H$ is normal:
+   The effect of the permutation $\sigma$ is reversed by the inverse $\sigma^{-1}$, except for 
+   the three elements $a$, $b$ and $c$ which are permuted by $\pi$. So $\sigma \circ \pi \circ 
+   \sigma^{-1}$ is a length-3-cycle. \\
 
-    $$ \forall \pi \in S_n\;\; \pi \circ (a,b) \circ (c,d) \circ \pi^{-1} \in H $$ \vspace{0.2em}
 
-    Sine $H$ is a group, it's closed under the product of its permutations, hence we can
-    claim:
+   \begin{equation*}
+        \sigma \circ \pi \circ \sigma^{-1} = 
+        \begin{cases*}
+            \sigma^{-1}(\pi(\sigma(x)))   & \text{if} \( x \in \{a,b,c\} \)  \\
+            \sigma^{-1}(\sigma(x))        & \text{otherwise}       \\
+        \end{cases*}
+    \end{equation*} \\
 
-    $$ \forall \pi \in S_n\;\;\forall \sigma \in H\;\; \pi \circ \sigma \circ \pi^{-1} \circ \sigma^{-1} \in H $$
-    $$ \forall \pi \in S_n\;\; \pi \circ (a,b) \circ (c,d) \circ \pi^{-1} \circ (d,c) \circ (b,a) \in H $$ \vspace{0.2em}
-
-    If we take $\pi = (a,b) \circ (c, e)$ then we can express the whole thing as a length-3-cycle:
-
-    \begin{align*} 
-        \gamma \in H &= \pi \circ (a,b) \circ (c,d) \circ \pi^{-1} \circ (d,c) \circ (b,a)  \\
-               &= (a,b) \circ (c, e) \circ (a,b) \circ (c,d) \circ (e, c) \circ (b,a) \circ (d,c) \circ (b,a) \\
-               &= (e,c,d)
-    \end{align*}
-\end{proof}
-
-A visualization of the above construction is shown in the following page in terms of 
-permutation diagrams on $A_5$ where $a = 1$, $b = 2$, $c = 3$, $d = 4$, $e = 5$. \\
+    This deconstruction makes it clear that only three elements are permuted, thus, the
+    permutations of this form are all length-3-cycles. \\ 
+\end{proof} \vspace{0.2em}
 
 \newpage
 
-\begin{figure}[H]
-    \label{fig:SwapTwoAs3Cycles}
-        \centering
-        \begin{tikzpicture}
-            
-            \node (1-1) at (0, 0) [circle, draw] {1};
-            \node (1-2) at (2, 0) [circle, draw] {2};
-            \node (1-3) at (4, 0) [circle, draw] {3};
-            \node (1-4) at (6, 0) [circle, draw] {4};
-            \node (1-5) at (8, 0) [circle, draw] {5};
-            
-            \node (2-1) at (0, -2) [circle, draw] {2};
-            \node (2-2) at (2, -2) [circle, draw] {1};
-            \node (2-3) at (4, -2) [circle, draw] {5};
-            \node (2-4) at (6, -2) [circle, draw] {4};
-            \node (2-5) at (8, -2) [circle, draw] {3};
+\begin{theorem}[Simplicity of $A_n$]
+    $A_n$ is simple for $n \geq 5$.
+\end{theorem}
+\begin{proof}
+    Proceed by induction. Since the statement is true for $n = 5$ and $n = 6$ assume it's true for 
+    any n. Let $\pi = (a,b,c) \in A_3$, and let $N \triangleleft A_{n+1}$, then take 
+    $\sigma \in N$.\\
 
-            \node (3-1) at (0, -4) [circle, draw] {1};
-            \node (3-2) at (2, -4) [circle, draw] {2};
-            \node (3-3) at (4, -4) [circle, draw] {4};
-            \node (3-4) at (6, -4) [circle, draw] {5};
-            \node (3-5) at (8, -4) [circle, draw] {3};
+    Since $\pi$ is a length-3-cycle, we can say that $\sigma \circ \pi \circ \sigma^{-1} = (i,j,k)$
+    is also a length-3-cycle. By lemma \ref{lem:everyThreeCycleIsInSubgroupsOfAN}. So consider the 
+    following construction:\\
 
-            \node (4-1) at (0, -6) [circle, draw] {2};
-            \node (4-2) at (2, -6) [circle, draw] {1};
-            \node (4-3) at (4, -6) [circle, draw] {3};
-            \node (4-4) at (6, -6) [circle, draw] {5};
-            \node (4-5) at (8, -6) [circle, draw] {4};
+    $$ (\sigma^{-1} \circ \pi \circ \sigma) \circ \pi^{-1} = (i,j,k)(a,b,c) $$
+    $$ \sigma^{-1} \circ (\pi \circ \sigma \circ \pi^{-1}) \in N $$ \\
 
-            \node (5-1) at (0, -8) [circle, draw] {1};
-            \node (5-2) at (2, -8) [circle, draw] {2};
-            \node (5-3) at (4, -8) [circle, draw] {5};
-            \node (5-4) at (6, -8) [circle, draw] {3};
-            \node (5-5) at (8, -8) [circle, draw] {4};
+    By definition of normality, since $\sigma \in N$, the permutation $(\pi \circ \sigma \circ \pi^{-1})$ 
+    must also be in $N$. So the product of $\sigma^{-1}$ with such permutation is also still in $N$. \\
+
+    Notice that the product of two length-3-cycles is in $A_6$ since it's even by definition and 
+    it permutes at most 6 elements. So we can say that $N \subseteq A_6$. Since $A_6$ is simple,
+    the intersection $A_6 \cap N$ is either trivial or $A_6$. Since $N$ contains an even permutation
+    that is in $A_6$ it must be a superset of $A_6$. So it must contain some length-3-cycles. \\
+
+    Via lemma \ref{lem:everyThreeCycleIsInSubgroupsOfAN} we can say that $N$ contains all
+    length-3-cycles, hence by lemma \ref{lem:evenPermutationIsProductOfThreeCycles} we can say 
+    that $N$ contains all even permutations. Hence $N = A_{n+1}$. \\
+\end{proof} \vspace{0.2em}
     
-            \draw[->] (1-1) -- (2-2);
-            \draw[->] (1-2) -- (2-1);
-
-            \draw[->] (1-3) -- (2-5);
-            \draw[->] (1-5) -- (2-3);
-            
-            \draw[dotted, ->] (1-4) -- (2-4);
-
-            \draw[->] (2-1) -- (3-2);
-            \draw[->] (2-2) -- (3-1);
-
-            \draw[->] (2-3) -- (3-4);
-            \draw[->] (2-4) -- (3-3);
-            
-            \draw[dotted, ->] (2-5) -- (3-5);
-
-            \draw[->] (3-1) -- (4-2);
-            \draw[->] (3-2) -- (4-1);
-
-            \draw[->] (3-3) -- (4-5);
-            \draw[->] (3-5) -- (4-3);
-            
-            \draw[dotted, ->] (3-4) -- (4-4);
-
-            \draw[->] (4-1) -- (5-2);
-            \draw[->] (4-2) -- (5-1);
-
-            \draw[->] (4-3) -- (5-4);
-            \draw[->] (4-4) -- (5-3);
-            
-            \draw[dotted, ->] (4-5) -- (5-5);
-    
-        \end{tikzpicture}
-        \caption{Visualization of lemma \ref{lem:everyEvenPermutationIsInSubgroupsOfAN}}
-    
-    \end{figure} \vspace{0.4em}
-
-Another way to refine the proof of lemma \ref{lem:everyEvenPermutationIsInSubgroupsOfAN} is to show 
-that every $(a, b) \circ (x, y) = (x, y) \circ (a, b)$ as long as $x,y,a,b$ are all distinct. This 
-means that we can refactor the equation as follows:
-
-\begin{align*} 
-    \pi\sigma\pi^{-1}\sigma^{-1} \in H 
-        &= (a,b) \circ (c, e) \circ (a,b) \circ (c,d) \circ (e, c) \circ (b,a) \circ (d,c) \circ (b,a) \\
-        &= (a,b) \circ (a,b) \circ (c, e) \circ (c,d) \circ (e, c) \circ (b,a) \circ (d,c) \circ (b,a) \\
-        &= (a,b) \circ (a,b) \circ (b,a) \circ (b,a) \circ (c, e) \circ (c,d) \circ (e, c) \circ (d,c) \\
-        &= \cancel{(a,b) \circ (a,b) \circ (b,a) \circ (b,a)} \circ (c, e) \circ (c,d) \circ (e, c) \circ (d,c) \\
-        &= (c, e) \circ (c,d) \circ (e, c) \circ (d,c) \\
-        &= (e,c,d)           
-\end{align*}
-
-
-
 \newpage
-    
-
