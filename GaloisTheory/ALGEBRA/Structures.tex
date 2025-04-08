@@ -1,0 +1,66 @@
+\subsection{Algebraic Structures}
+In this chapter we will give a bunch of definitions and we will prove some, 
+hopefully trivial, facts about them. We will also give some examples of 
+algebraic structures that some might encounter in the following chapters.
+
+\begin{definition}[Monoid]
+    A monoid $(M, \perp)$ is a set $M$ equipped with an internal binary operation 
+    $\perp$ that is both associative, and has some identity element $\epsilon$.
+\end{definition}
+
+\begin{definition}[Group, Abelian Group]
+    A group $(G, \perp)$ is monoid for which every element has an inverse. A 
+    group is abelian if the operation $\perp$ is commutative.
+\end{definition}
+
+\begin{lemma}
+    If $(G, \perp)$ is a group, then, for every element $a \in A$, the identity
+    $k \perp k = k$ implies that $a$ is the identity element.
+\end{lemma}
+\begin{proof}
+    $$ a \perp \epsilon = a $$
+    $$ a \perp (k \perp k^{-1}) = a $$
+    $$ a \perp (k \perp k \perp k^{-1}) = a $$
+    $$ a \perp k \perp (k \perp k^{-1}) = a $$
+    $$ a \perp k \perp \epsilon = a $$
+    $$ a \perp k = a $$
+\end{proof}
+
+\begin{lemma}[Cancellation-law]
+    If $(G, \perp)$ is a group, then, $f(x) = x \perp k$ is injective.
+\end{lemma}
+\begin{proof}
+    $$ x_1 \perp k = x_2 \perp k $$
+    $$ x_1 \perp k \perp k^{-1} = x_2 \perp k \perp k^{-1} $$
+    $$ x_1 = x_2 $$
+\end{proof}
+
+\begin{definition}[Ring]
+    A ring $(A, \perp, \nabla)$ is a set $A$ equipped with two internal binary operations
+    $\perp$ and $\nabla$ such that $(A, \perp)$ is an abelian group, $(A, \nabla)$ is a monoid, 
+    and the two operations are compatible in the sense that for all $a, b, c \in A$:
+    \begin{align*}
+        a \nabla (b \perp c) &= (a \nabla b) \perp (a \nabla c)\\
+        (a \perp b) \nabla c &= (a \nabla c) \perp (b \nabla c)
+    \end{align*}
+\end{definition} \vspace{1em}
+
+\begin{lemma}[Absorbing element]
+    If $(A, \perp, \nabla)$ is a ring, then the identity element of $(A, \perp)$ 
+    is the absorbing element of $(A, \nabla)$. Meaning that an absorbing element
+    always exists.
+\end{lemma}
+\begin{proof}
+    Assuming $\theta$ to be the identity element of $(A, \perp)$, we have that the following 
+    holds:
+    $$ a \nabla \theta = a \nabla (\theta \perp \theta) = (a \nabla \theta) \perp (a \nabla \theta) $$
+\end{proof}
+
+\begin{definition}[Field]
+    A field $(F, \perp, \nabla)$ is a field for which every element has an inverse 
+    with respect to $\nabla$ except the absorbing element, meaning that $(F - \{\theta\}, \nabla)$
+    is a monoid.
+\end{definition}
+
+
+\newpage
