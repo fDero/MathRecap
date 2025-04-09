@@ -58,7 +58,71 @@ rest of the note. In particular, we will define Monoids, Groups, Rings and Field
 \begin{definition}[Field]
     A field $(F, \perp, \nabla)$ is a field for which every element has an inverse 
     with respect to $\nabla$ except the absorbing element, meaning that $(F - \{\theta\}, \nabla)$
-    is a monoid.
+    is a group.
 \end{definition}
+
+\newpage
+
+\begin{example}
+    An example of commutative monoid is $(\mathbb{N}, +)$, where the $+$ operation is the 
+    classical sum of natural numbers. The identity element is $0$, and the operation is 
+    associative. There are no inverse elements for non-zero numbers such that 
+    their sum is $0$. \\
+\end{example}
+
+\begin{example}
+    Another example of commutative monoid is $(P(S), \cup)$, where $P(S)$ is the power set of a 
+    set $S$,and the $\cup$ operation is the union of sets. The identity element is the empty set, 
+    and the operation is associative. There are no inverses. \\
+\end{example}
+
+\begin{example}
+    An example of non-commutative monoid is $(\{\;f : S \rightarrow S \;\}, \circ)$, where the 
+    $\circ$ operation is the function composition. The identity element is the identity function. 
+    Not all functions are invertible. \\
+\end{example}
+
+\begin{example}
+    Another example of commutative monoid is $(P(S), \cap)$, where $P(S)$ is the power set of a 
+    set $S$,and the $\cap$ operation is the intersection of sets. The identity element is the 
+    set $S$, and the operation is associative. There are no inverses. \\
+\end{example}
+
+\begin{example}
+    An example of non-abelian group is $(\mathbb{R}_{2,2}, \times)$, where $\mathbb{R}_{2,2}$ 
+    is the set of two by two matrices with real coefficients, and the $\times$ operation is the 
+    matrix product. The operation is associative, there is an identity element, and the
+    inverse of a matrix always exists. However, the operation is not commutative. \\ 
+\end{example}
+
+\begin{example}
+    An example of non-abelian group is the group $(B(S), \circ)$ of all bijective functions from 
+    a set to itself under the operation of function composition. The inverse is the identity 
+    function and the operation is associative. Bijections are invertible. \\ 
+\end{example}
+
+\begin{example}
+    An example of abelian group is $(\mathbb{Q}, \cdot)$, where the $\cdot$ operation is the 
+    classical multiplication of rational numbers. The identity element is $1$, and the 
+    operation is associative. The inverse of $x$ is $\frac{1}{x}$. \\
+\end{example}
+
+\begin{example}
+    An example of ring is $(\mathbb{Z}, +, \cdot)$, where the $+$ operation is the classical sum of
+    integers, and the $\cdot$ operation is the classical multiplication of integers. \\
+\end{example}
+
+\begin{example}
+    Another ring is $(\mathbb{R}[x], +, \cdot)$ where $\mathbb{R}[x]$ is the set of
+    polynomials with real coefficients, and the $+$ and $\cdot$ operations are the classical sum and
+    of polynomials. The reason why this is not a field is that the polynomial $x$ does not have a
+    multiplicative inverse such that $x \cdot f(x) = 1$. In general, $F[x]$ where $F$ is a field, 
+    forms a ring. \\
+\end{example}
+
+\begin{example}
+    Canonical examples of fields are $(\mathbb{Q}, +, \cdot)$, $(\mathbb{R}, +, \cdot)$, 
+    $(\mathbb{C}, +, \cdot)$. \\
+\end{example}
 
 \newpage
