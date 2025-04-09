@@ -25,6 +25,7 @@ hence why we waited until now to define it.
 \end{proof} \vspace{0.2em}
 
 \begin{lemma}
+    \label{lem:normalSubgroupGaloisExtension}
     If $E$ is a Galois extension of $F$, then given an extension $I$ such that 
     $F \subseteq I \subseteq E$, such extension can be a Galois extension of $F$  
     only if its Galois group is a \emph{normal} subgroup of the Galois group of $E$.
@@ -45,6 +46,64 @@ hence why we waited until now to define it.
     using $\sigma$ that, because of lemma \ref{lem:galoisExtensionsGetsPermuted}, maps elements
     of $I$ in $I$, hence $Gal_{I}(E) \triangleleft Gal_{F}(E)$ since its closed under conjugation. \\
 
-
-
 \end{proof} \vspace{0.2em}
+
+\newpage
+
+\begin{lemma}
+    \label{lem:normalSubgroupClosedMapping}
+    If $Gal_{I}(E)$ is a normal subgroup of $Gal_{F}(E)$, then any automorphism in $Gal_{F}(E)$
+    maps elements of $I$ to elements of $I$ (this doesn't imply that it fixes $I$).
+\end{lemma}
+\begin{proof}
+    Let $Gal_{I}(E) \triangleleft Gal_{F}(E)$. By definition of normal subgroup, we have that the 
+    conjugate of every automorphism in $Gal_{I}(E)$ is also in $Gal_{I}(E)$ (herby it fixes $I$). \\
+
+    $$ Gal_{I}(E) \triangleleft Gal_{F}(E) \iff \forall \phi \in Gal_{I}(E)\;\; 
+        \forall \sigma \in Gal_{F}(E)\;\; [\;\phi \circ \sigma \circ \phi^{-1} \in Gal_{I}(E) \;] $$
+        \vspace{0.2em}
+    
+    Notice that $\phi \circ \sigma \circ \phi^{-1}$ has to fix $I$ for every choice of $\sigma$, 
+    and there are many possible $\sigma$ that permute elements of $E - I$ in an unpredictable 
+    way. The only elements that are guarateed to be fixed by $\sigma$ are the ones in $I$. In 
+    particular, for our choice of $\phi$, any possible $\sigma$ that permutes elements of $E - I$ 
+    must not interfere with the fact that $\phi \circ \sigma \circ \phi^{-1}$ fixes $I$. The only 
+    way for this to be possible is if $\phi$ maps element of $I$ to element of $I$ herby avoiding 
+    unpredictable shuffling by $\sigma$. \\
+    
+    To put it \emph{more formally}, assume that 
+    $\phi^{-1}(i \in I) = e \in E - I$, then, by carefully choosing $\sigma$ such 
+    that $\sigma(e) = e_2 \neq e$, and that's possible since $\sigma$ doesn't have to fix $I$, we
+    end up in a situation where $\phi \circ \sigma \circ \phi^{-1}(i) = \phi(e_2) \neq i$. This 
+    is a contradiction and it arises from the assumption that $\phi$ can map elements of 
+    $I$ outside of $I$. Thus, that must be impossible. \\
+\end{proof}
+
+\begin{lemma}
+    If $E$ is a normal extension of $F$, and if $Gal_{I}(E)$ is a normal 
+    subgroup of $Gal_{F}(E)$, then $I$ is a normal extension of $F$.
+\end{lemma}
+\begin{proof}
+    By the previous lemma (lemma \ref{lem:normalSubgroupClosedMapping}) we know that every 
+    automorphism in $Gal_{F}(E)$ must map elements of $I$ to elements of $I$. \\
+
+    Since we know that $E$ is a normal extension of $F$, we know that every irreducible
+    polynomial in $F[x]$ with at least one root in $E$ splits completely into linear factors
+    over $E$, meaning that $E$ contains all roots of such polynomial. \\
+
+    All the roots of this polynomial are permuted by the automorphisms in $Gal_{F}(E)$, 
+    and since such automorphisms must map elements of $I$ to elements of $I$, we know that
+    $I$ contains all roots of every polynomial with at least one root in $I$. \\
+\end{proof}
+
+\begin{theorem}[Galois extensions theorem] 
+    If $E$ is a Galois extension of $F$, and if $I$ is a field extension of $F$ such that
+    $I \subseteq E$, then $I$ is a Galois extension of the field $F$ if and only if 
+    $Gal_{I}(E)$ is a normal subgroup of $Gal_{F}(E)$.
+\end{theorem}
+\begin{proof}
+    The first implication is given by lemma \ref{lem:normalSubgroupGaloisExtension}, while 
+    the second is given by lemma \ref{lem:normalSubgroupClosedMapping} in conjuction with 
+    the key observation that separability is always preserved for every subfield of a 
+    separable field. Thus the proof is complete.
+\end{proof}
