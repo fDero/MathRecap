@@ -1,0 +1,102 @@
+
+\subsection{The Galois group}
+The Galois group is a group of automorphisms of a field extension 
+that fixes the base field. The Galois group is a central concept in 
+Galois theory, since it's precisley what the theory is built upon.
+
+\begin{definition}[Automorphism]
+A field-automorphism for the field $(F, +, \cdot)$ is a bijective map 
+$\phi: F \to F$ such that for all $a, b \in F$, the basic properties of a field are preserved, 
+meaning that $\phi$ act as a linear mapping with respect to the ring operations:
+
+$$ \phi(a + b) = \phi(a) + \phi(b) $$
+$$ \phi(ab) = \phi(a)\phi(b) $$ \vspace{0.2em}
+\end{definition}
+
+\begin{lemma}[Zero-lemma]
+For any automorphism $\phi$ of a field $(F, +, \cdot)$, we have that:
+\end{lemma}
+\begin{proof}
+$$ \phi(0) = \phi(0 \cdot a) = \phi(0) \phi(a) $$
+$$ \therefore \phi(0) = 0 $$
+\end{proof}
+
+
+\begin{lemma}[Unit-lemma]
+For any automorphism $\phi$ of a field $(F, +, \cdot)$, we have that:
+\end{lemma}
+\begin{proof}
+$$ \phi(a) = \phi(1 \cdot a) = \phi(1) \phi(a) $$
+$$ \therefore \phi(1) = 1 $$
+\end{proof}
+
+\begin{lemma}
+    All the automorphisms of a given field form a group under the operation of composition.
+\end{lemma}
+\begin{proof}
+    Consider two automorphisms $\phi_1$ and $\phi_2$ of a field $F$. The composition
+    $\phi_1 \circ \phi_2$ is also an automorphism of $F$, since it preserves the field operations:
+
+    $$ (\phi_1 \circ \phi_2)(a + b) = \phi_1(\phi_2(a + b)) = \phi_1(\phi_2(a) + \phi_2(b)) = \phi_1(\phi_2(a)) + \phi_1(\phi_2(b)) $$
+    $$ (\phi_1 \circ \phi_2)(ab) = \phi_1(\phi_2(ab)) = \phi_1(\phi_2(a) \cdot \phi_2(b)) = \phi_1(\phi_2(a)) \cdot \phi_1(\phi_2(b)) $$
+    $$ \therefore \phi_1 \circ \phi_2 \texttt{ is an automorphism of } F $$
+\end{proof}
+
+\begin{definition}[Galois group]
+    The Galois group of a field extension $E$ for the field $F$ is the group of
+    automorphisms of $E$ that fix $F$. In other words, the Galois group is the
+    group of all the automorphisms of $E$ that leave every element of $F$ unchanged.
+
+    $$ Aut(E) = \{ \phi : E \rightarrow E \texttt{ automorphisms } \} $$
+    $$ Gal_{F}(E) = \{ \phi \in \text{Aut}(E) \;:\; \forall a \in F \;\; \phi(a) = a \} $$
+\end{definition} \vspace{0.2em}
+
+\begin{lemma}[roots-permutation lemma]
+    If $\phi$ is an automorphism of a field extension $E$ of $F$, meaning it's an element 
+    of the Galois group $Gal_{F}(E)$, then, for every polynomal $p \in F[x]$ the automorphism 
+    $\phi$ must map roots of $p$ to other roots of $p$. 
+\end{lemma}
+\begin{proof}
+    $$ \phi(p(x)) = \phi(a_nx^n + a_{n-1}x^{n-1} + \dots + a_0) $$
+    $$ = a_n \phi(x^n) + a_{n-1} \phi(x^{n-1}) + \dots + a_0 $$
+    $$ = a_n \phi(x)^n + a_{n-1} \phi(x)^{n-1} + \dots + a_0 $$
+    $$ = p(\phi(x)) $$
+    $$ \therefore \phi(p(x)) = p(\phi(x)) $$
+\end{proof}   
+
+The roots-permutation lemma is important, since it highlights a very intresting property of the
+Galois group, which is the fact that for every polynomial $p \in F[x]$ that has roots 
+$r_1, r_2, \dots, r_n$ not contained in $F$, the Galois group $Gal_{F}(E)$ will permute 
+the roots of $p$ and will herby be isomorphic to the group of permutations of $n$ elements $S_n$.
+
+\begin{theorem}[Fundamental theorem of Galois theory]
+    Take a field extension $E$ of a field $F$, then there exists a bijection between 
+    the intermediate fields $F \subseteq I \subseteq E$ and the subgroups of the
+    Galois group $Gal_{F}(E)$, defined as follows:
+
+    $$ \mathcal{G} : \{ I \;:\; F \subseteq I \subseteq E \} \rightarrow \texttt{ subgroups of } Gal_{F}(E) $$
+    $$ \mathcal{G}(I) = Gal_{I}(F)  $$
+\end{theorem}
+\begin{proof}
+    The function $\Phi$ is clearly injective, so we only need to show that it's surjective. To 
+    show that, we will consider the generic subgroup $H$ of the Galois group 
+    $Gal_{F}(E)$, and the set $I$ of all the elements of $E$ that are fixed by every
+    automorphism in $H$. We will show that $I$ is in the domain of $\Phi$ such that
+    $\Phi(I) = H$ by its very construction. \\
+
+    First, let's show that not only every element of $I$ is fixed by every
+    automorphism in $H$, but also that every product and sum of elements of $I$ is 
+    still fixed by every automorphism in $H$, herby showing that $I$ is closed.
+
+    $$ \forall a,b \in I \;\; \forall \phi \in H \;\; \phi(a \cdot b) = \phi(a)\phi(b) = ab $$
+    $$ \forall a,b \in I \;\; \forall \phi \in H \;\; \phi(a + b) = \phi(a) + \phi(b) = a + b $$ \vspace{0.2em}
+
+    Since $H$ is a subgroup of $Gal_{F}(E)$, we have that every $\phi$ in $H$ fixes $F$, meaning that
+    $F \subseteq I$. Thus $I$ is a field extension of $F$ that maps to $H$ via $\mathcal{G}$ (Galois correspondence). \\
+\end{proof}
+
+A very intresting consequence of the fundamental theorem of Galois theory is that 
+every subgroup of a Galois group $Gal_{F}(E)$ is still a Galois group of some smaller field
+extension.
+
+\newpage

@@ -1,0 +1,47 @@
+
+\subsection{Field extensions}
+A field extension is a way to enlarge a field by adding new elements to it. We 
+will reason about the generic field $F$, but it's important to note that the
+the real goal here is to derive some general results that can be applied to
+the field of coefficients of a given polynomal extended by its roots.
+
+\begin{definition}[Field extension]
+    A field extension $F(r_1, r_2, \dots, r_n)$ is the smallest possible 
+    field that contains every element in $F$ and the elements $r_1, r_2, \dots, r_n$.
+
+    $$ F(r_1) = \{ a + br_1 \;:\; a,b \in F \} $$
+    $$ F(r_1, r_2, \dots, r_n) = [F(r_1, r_2, \dots, r_{n-1})](r_n) $$
+\end{definition} \vspace{0.2em}
+
+\begin{definition}[Normal extension]
+    A field extension $F(r_1, r_2, \dots, r_n)$ is a normal extension of $F$ if every
+    polynomial $f(x) \in F[x]$ that has a root in $F(r_1, r_2, \dots, r_n)$ splits 
+    into linear factors in $F(r_1, r_2, \dots, r_n)$. In other words, a normal extension is a
+    field extension that contains all the roots of every polynomial that has at least 
+    one root in it.
+
+    $$ F \subseteq E \texttt{ is normal } 
+        \iff \forall p \in F[x] \;\;\forall r \in E\;\; 
+        [\;p(r) = 0 \Rightarrow p(x) = (x - r) \cdot p'(x)\;]
+    $$
+\end{definition} \vspace{0.2em}
+
+It's difficult to prove, but hopefully not difficutl to believe, that $\mathbb{C} = \mathbb{R}(i)$, 
+where $i$ is the imaginary unit, is a normal extension of $\mathbb{R}$. The reason is that 
+every polynomial $p(x) \in \mathbb{R}[x]$ that has a root in $\mathbb{C}$ splits into linear
+factors in $\mathbb{C}$. For example, the polynomial $x^2 + 1$ splits into linear 
+factors as $(x - i)(x + i)$. \\
+
+\begin{definition}[Separable extension]
+    A field extension $F(r_1, r_2, \dots, r_n)$ is a separable extension of $F$ if given 
+    an element of such extension $a \in F(r_1, r_2, \dots, r_n)$, the monic irriducible polynomial 
+    of lowest degree $n$ for which $a$ is a root has exactly $n$ distinct roots.
+\end{definition} \vspace{0.2em}
+
+Notice that $\mathbb{Q}$ is an extension of itself, and it's separable, since for every possible 
+value in $a \in \mathbb{Q}$ we have that the minimal monic irriducible polynomial is $x - a$, 
+which has one root and it's of degree 1. The field $\mathbb{Q}(\sqrt{2})$ is also a separable, 
+since the only minimal monic irriducible polynomial of degree two that has roots in it is $x^2 - 2$, 
+which has two distinct roots, namely $\sqrt{2}$ and $-\sqrt{2}$. 
+
+\newpage
