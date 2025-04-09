@@ -1,0 +1,50 @@
+\subsection{Galois extensions}
+A Galois extension is a field extension that is both normal and separable. There 
+is a very close relationship between Galois extensions and the Galois group,
+hence why we waited until now to define it. 
+
+\begin{definition}[Galois extension]
+    A field extension $E$ of $F$ is a Galois extension if it is both normal and separable.
+\end{definition} \vspace{0.2em}
+
+\begin{lemma}
+\label{lem:galoisExtensionsGetsPermuted}
+    If $I$ is a Galois extension of $F$, and if $E$ is a Galois extension of $I$, 
+    then all automorphisms in $Gal_{F}(E)$ maps elements of $I$ to elements of $I$.
+\end{lemma}
+\begin{proof}
+    given that $I$ is a Galois extension of $F$, $I$ is normal thus every irreducible polynomial 
+    in $F[x]$ with at least one root in $I$ splits completely into linear factors over $I$. \\
+
+    This guarantees that contains all roots of any element in ensuring automorphisms of $E$ over 
+    $I$ permute these roots, meaning they must map elements of $I$ to elements of $I$. \\
+
+    Being separable, on the other hand, guarantees that every element is root of at least 
+    one polynomial (the minimal monic irreducible polynomial of such element). Thus every 
+    element in $I$ must be permuted by the automorphisms of $E$ over $I$. \\
+\end{proof} \vspace{0.2em}
+
+\begin{lemma}
+    If $E$ is a Galois extension of $F$, then given an extension $I$ such that 
+    $F \subseteq I \subseteq E$, such extension can be a Galois extension of $F$  
+    only if its Galois group is a \emph{normal} subgroup of the Galois group of $E$.
+\end{lemma}
+\begin{proof}
+    Let $I$ be a Galois extension of $F$. By definition, $I$ is both normal and separable, 
+    thus every automorphism in $Gal_{F}(E)$ must map elements of $I$ to elements of $I$ by 
+    lemma \ref{lem:galoisExtensionsGetsPermuted} (notice that this doesn't mean that $I$ is 
+    fixed by such isomorphisms).\\
+
+    $$ Gal_{I}(E) = \{ \phi \in \text{Aut}(E) \;:\; \forall a \in I \;\; \phi(a) = a \} $$ 
+    $$ Gal_{F}(E) = \{ \phi \in \text{Aut}(E) \;:\; \forall a \in F \;\; \phi(a) = a \} $$ \\
+
+    For every automorphism $\phi \in Gal_{I}(E)$, consider its conjugate 
+    $\sigma \circ \phi \circ \sigma^{-1}$ in $Gal_{F}(E)$. Such automorphism, maps elements 
+    of $I$ to elements of $I$ via $\sigma^{-1}$, then maps the results to themselves since $phi$
+    fixes $I$ being an element of its Galois group, and finally maps them back in $I$ 
+    using $\sigma$ that, because of lemma \ref{lem:galoisExtensionsGetsPermuted}, maps elements
+    of $I$ in $I$, hence $Gal_{I}(E) \triangleleft Gal_{F}(E)$ since its closed under conjugation. \\
+
+
+
+\end{proof} \vspace{0.2em}
