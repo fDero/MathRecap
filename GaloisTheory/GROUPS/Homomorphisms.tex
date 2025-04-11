@@ -9,6 +9,13 @@ will later use to proof a result about the solvability of polynomial equations.
     $$ \forall g_1, g_2 \in G\;\; \varphi(g_1g_2) = \varphi(g_1)\varphi(g_2) $$
 \end{definition} \vspace{0.2em}
 
+\begin{definition}[Kernel]
+    We call kernel of a group homomorphism $\varphi: G \to H$ the set of
+    elements in $G$ that are mapped to the identity element of $H$ by $\varphi$.
+
+    $$ \texttt{ker}_{\varphi} = \{ g \in G \;:\; \varphi(g) = 1_H \}$$
+\end{definition} \vspace{0.2em}
+
 \begin{definition}[Group epimorphism]
     A group homomorphism $\varphi: G \to H$ that is also a surjective 
     function is called a group epimorphism.
@@ -44,6 +51,7 @@ will later use to proof a result about the solvability of polynomial equations.
 \end{definition} \vspace{0.2em}
 
 \begin{lemma}
+\label{lem:abelianityPreservedByIsomorphism}
     If $A$ is an abelian group and $\varphi: A \to B$ is a group isomorphism, 
     then $B$ is also an abelian group (notice that since a bijection is surjiective 
     $B = \vv{\varphi}(A)$).
@@ -60,7 +68,61 @@ will later use to proof a result about the solvability of polynomial equations.
 
 \newpage
 
+\begin{theorem}[First theorem of isomorphism]
+\label{thm:firstIsomorphism}
+    For every group homomorphism $\varphi: A \to B$, the image of $A$ via $\varphi$ 
+    is isomorphic to the quotient group $A$ divided by the kernel of $\varphi$:
+
+    $$ \frac{G}{\texttt{ker}_{\varphi}} \sim \vv{\varphi}(G) $$ \vspace{0.2em}
+
+    We can proof that these groups are in fact isomorphic by showing that the
+    function $\psi$ is an isomorphism between them, since it's clearly both 
+    injective and surjective.
+
+    $$ \psi: \frac{G}{\texttt{ker}_{\varphi}} \to \vv{\varphi}(G) $$
+    $$ \psi(g\texttt{ker}_{\varphi}) = \varphi(g) $$ \vspace{0.2em}
+\end{theorem}
+
+\begin{theorem}[Second theorem of isomorphism]
+\label{thm:secondIsomorphism}
+    Consider the groups $H \triangleleft B \triangleleft A$. Then, there is an 
+    isomorphism between the quotient groups $(AH/BH)$ and $\frac{A}{B}$.
+
+    $$ \frac{AH}{BH} \sim \frac{A}{B} $$ \vspace{0.2em}
+\end{theorem}
+\begin{proof}
+    To prove that exists an isomorphism between such groups, we will rely on the previous 
+    result of the first theorem of isomorphism (theorem \ref{thm:firstIsomorphism}). We 
+    therefore need to exibit a homomorphism between the groups $AH$ and $\frac{A}{B}$:
+
+
+    $$ \varphi : (AH) \rightarrow \frac{A}{B} $$
+    $$ \varphi(ah) = aB $$ \vspace{0.2em}
+
+    Constructed as such, we can see that $\varphi$ is a homomorphism, since $B$ is a normal subgroup 
+    of $A$, hence, left cosets and right cosets are equal (lemma \ref{lem:normal_cosets}).
+
+    $$ \varphi(a_1h_1)\varphi(a_2h_2) = a_1Ba_2B = a_1B(a_2B) = a_1a_2BB = a_1a_2B = \varphi(a_1h1a_2h_2) $$ \\
+
+    We can also see that it is a surjective function, since for every $aB$ in $\frac{A}{B}$,
+    we can find $ah$ in $AH$ such that $\varphi(ah) = aB$. So let's go ahead and inspect 
+    it's kernel (the set of elements mapped to the identity). Please note that the kernel 
+    of this epimorphism is just $BH$: \\
+
+    $$ \varphi(ah)\varphi(b_1h_1 \in BH \subseteq AH) = aB = \varphi(ah) $$
+    $$ \texttt{ker}_{\varphi} = BH $$
+
+    We can herby apply the first theorem of isomorphism (theorem \ref{thm:firstIsomorphism}) to
+    finish the proof:
+
+    $$ \frac{AH}{BH} = \frac{AH}{\texttt{ker}_{\varphi}} \sim \vv{\varphi}(AH) = \frac{A}{B} $$ \\
+
+\end{proof} \vspace{0.2em}
+
+\newpage
+
 \begin{theorem}[Third theorem of isomorphism]
+\label{thm:thirdIsomorphism}
     Consider the groups $H \triangleleft B \triangleleft A$. Then, there is an 
     isomorphism between the quotient groups $(\frac{A}{H}/\frac{B}{H})$ and $\frac{A}{B}$.
 
@@ -69,7 +131,8 @@ will later use to proof a result about the solvability of polynomial equations.
 \vspace{0.2em}
 
 To prove this theorem, it's helpful to keep in mind the form of the generic element of 
-the set (groups) we're working with (for an easier notation, we will call $H\frac{B}{H}$ by $K$):
+the set (groups) we're working with (for an easier notation, we will call $H\frac{B}{H}$ by 
+the name $K$):
 
 $$ \frac{A}{H} = \{ aH \;:\; a \in A \} $$
 $$ \frac{B}{H} = \{ bH \;:\; b \in B \} $$
@@ -112,60 +175,5 @@ $$ \frac{(\frac{A}{H})}{(\frac{B}{H})} = \{ aK \;:\; a \in A \} $$
     (sometimes it can be used $\cong$ as well, but not here). \\ 
 
 \end{proof} \vspace{0.2em}
-
-\newpage
-
-\begin{definition}[Canonical projection]
-    The homomorphism $\pi: G \to \frac{G}{H}$ is called the canonical projection for $H$, 
-    and it is defined as $\pi(g) = gH$. Notice that it maps:
-    
-    $$ \vv{\pi}(H) = \epsilon $$ 
-    $$ \vv{\pi}(G) = \frac{G}{H} $$
-\end{definition} 
-\vspace{0.2em}
-
-The canonical projection is a surjective homomorphism, hence because of lemma 
-\ref{lem:epimorphismPreservesNormality} we can conclude that 
-it preserves normality. It's inverse $\pi^{-1}$ is injective, and is not 
-always true that an injective homomorphism preserves normality. The 
-canonical projection tho is a very special case because it's inverse 
-also preserves normality. \\
-
-\begin{theorem}[Normality preservation]
-    Normality is preserved: $\vv{\pi}(G) \triangleleft \vv{\pi}(K) \iff G \triangleleft K $
-\end{theorem}
-\begin{proof}
-    The $\Leftarrow$ direction is proved by lemma \ref{lem:epimorphismPreservesNormality}, 
-    since $\pi$ is a surjective homomorphism (epimorphism). The $\Rightarrow$ direction 
-    can be proved by the following argument:
-
-    $$ \vv{\pi}(G) \triangleleft \vv{\pi}(K) $$
-    $$ \forall k \in K \;\; \pi(k)\vv{\pi}(G)\pi(k^{-1}) \in \vv{\pi}(G) $$
-    $$ \forall k \in K \;\; \forall g \in G \;\; \pi(k)\pi(g)\pi(k^{-1}) \in \vv{\pi}(G) $$
-    $$ \forall k \in K \;\; \forall g \in G \;\; \pi(kgk^{-1}) \in \vv{\pi}(G) $$
-    $$ \forall k \in K \;\; \forall g \in G \;\; kgk^{-1} \in G $$
-     
-\end{proof} \vspace{0.2em}
-
-\begin{lemma}
-\label{lem:quotientSubGroups}
-    Every subgroup of a quotient of groups $\frac{G}{H}$ is of the form $\frac{S}{H}$ for 
-    some $S < G$. 
-\end{lemma}
-\begin{proof}
-    Every subgroup $T$ of $\frac{G}{H}$ is a set of cosets of $G$ with $H$ and can 
-    be expressed as:
-    
-    $$ T = \{ \; gH \in \frac{G}{H} \;:\; \dots \; \} $$ \vspace{0.2em}
-
-    Let's consider $S = \cev{\pi}(T) = \{ g \in G \;:\; gH \in T \}$. and show that is a group, 
-    by showing that is closed under the operation of the group $(G, \cdot)$: \\
-
-    $$ \forall a,b \in S \;\; [ \; (aH)(bH) = (ab)H \in T \; ] \Rightarrow (ab) \in S $$
-\end{proof} \vspace{0.2em}
-
-All the results so far will be later useful to study "Galois-solvability" of a group. As 
-stated many times so far, the Galois group of some polynomial will be Galois-solvable if and only if
-the polynomal has roots expressable as radicals. 
 
 \newpage

@@ -1,0 +1,105 @@
+\subsection{Galois-solvability of groups}
+A key concept in Galois theory is the notion of solvability of a group. In this 
+chapter we will define what is a Galois-solvable group, and we will explore their 
+properties. 
+
+\begin{definition}[Galois-solvable group]
+    A Galois group $G$ is said to be Galois-solvable if some of its normal subgroups 
+    can be arranged in a chain of the form:
+    
+    $$ \{e\} = G_0 \triangleleft G_1 \triangleleft \cdots \triangleleft G_n = G $$
+    \vspace{0.1em}
+
+    such that each factor group $G_{i+1}/G_i$ is abelian for every choice of $i$. This of 
+    course implies that $G_0$ must be abelian, since $G_0/\{\epsilon\}$ is just $G_0$ itself. 
+    Since $\{ \epsilon \}\triangleleft G$, if $G$ were to be abelian the condition would 
+    be met, meaning that every abelian group is solvable. \\
+\end{definition} \vspace{0.2em}
+
+\begin{lemma}
+\label{lem:solvableNormalSubgroup}
+    For every $H \triangleleft G$ whenever $G$ is solvable, then $H$ is also solvable.
+\end{lemma}
+\begin{proof}
+    Consider the following solvability chain for the group $G$ that is solvable:
+
+    $$ \{e\} = G_0 \triangleleft G_1 \triangleleft G_2
+    \triangleleft G_3 \triangleleft \dots \triangleleft G_{n-2} \triangleleft 
+    G_{n-1}  \triangleleft G $$
+    \vspace{0.1em}
+
+    Consider $H_i = G_i \cap H$ for every $i$. We can see that $H_i$ is normal in $H$ since
+    the intersection of normal subgroups is a normal subgroup. We only need to show that 
+    the factor groups $H_{i+1}/H_i$ are abelian. So let's just apply the definition: \\
+ 
+    $$ \{e\} = H_0 \triangleleft H_1 \triangleleft H_2
+    \triangleleft H_3 \triangleleft \dots \triangleleft H_{n-2} \triangleleft 
+    H_{n-1}  \triangleleft H $$
+
+    $$ G_{i+1}/G_i = \{\; xG_i \;:\; x \in G_{i+1} \;\} $$
+    $$ H_{i+1}/H_i = (G_{i+1} \cap H)/(G_i \cap H) $$
+    $$ H_{i+1}/H_i = \{\; xH_i \;:\; x \in H_{i+1} \;\} $$
+    
+    $$ \forall x,y \in G_{i+1} \;[\;xyG_i = yxG_i \;] \Rightarrow \forall x,y 
+    \in H_{i+1} \;[\;xyH_i = yxH_i \;] $$
+    \vspace{0.1em}
+
+\end{proof}
+
+\newpage
+
+\begin{theorem}
+    If $G$ is solvable, the quotient $G/H$ is also solvable for 
+    every choice of $H$.
+\end{theorem}
+\begin{proof}
+    Consider the following solvability chain for the group $G$ that is solvable:
+
+    $$ \{e\} = G_0 \triangleleft G_1 \triangleleft \cdots 
+    \triangleleft G_i \triangleleft G_{i+1} \triangleleft G_{i+2} \triangleleft 
+    \cdots \triangleleft G $$
+    \vspace{0.1em}
+
+    Just project the whole chain under the canonical projection $\pi(x) = xH$
+
+    $$ \vv{\pi}(\{e\}) = \vv{\pi}(G_0) \triangleleft \vv{\pi}(G_1) \triangleleft 
+    \cdots \triangleleft \vv{\pi}(G) $$
+    \vspace{0.1em}
+
+    Now, since $\pi(x) = xH$ is an epimorphism, we can use the lemma 
+    \ref{lem:epimorphismPreservesNormality} to claim that the new chain is still a valid 
+    chain of subgroups. Let's study this projected chain further. \\
+    
+    Please notice that $\vv{\pi}(\{\epsilon\})$ is just $\epsilon H = H$ with is solvable 
+    because it is a normal subgroup of the solvable group $G$ 
+    (lemma \ref{lem:solvableNormalSubgroup}), while $\vv{\pi}(G) = G/H$ is our quotient group. \\
+    
+    $$ \{ \epsilon \}  \triangleleft H_1  \triangleleft H2  \triangleleft \dots  \triangleleft
+    H \triangleleft \vv{\pi}(G_0) \triangleleft \vv{\pi}(G_1) \triangleleft 
+    \cdots \triangleleft \frac{G}{H} $$
+    \vspace{0.1em}
+
+    Using theorems \ref{thm:secondIsomorphism} and \ref{thm:thirdIsomorphism}, 
+    we can inspect for isomorphisms between 
+    the groups of this construction, keeping in mind that isomorphisms preserves 
+    abelianity as in lemma \ref{lem:abelianityPreservedByIsomorphism}. \\
+
+    $$ \frac{\vv{\pi}(G_{i+1})}{\vv{\pi}(G_i)} 
+    = \frac{(G_{i+1}H/H)}{(G_{i}H/H)} 
+    \sim \frac{(G_{i+1}H)}{(G_{i}H)} 
+    \sim \frac{(G_{i+1})}{(G_{i})} 
+    $$ \\
+
+    We don't \emph{really} need to warry about enforicng the condition of $H \triangleleft G_i 
+    \triangleleft G_{i+1}$, that is required for using the theorem \ref{thm:secondIsomorphism}, 
+    since if that wasn't the case, $\vv{\pi}(G_i) = H$, hence, we would already have arrived 
+    to the end of the solvability chain. \\
+
+    In case is not obvious why the previous statement is true, we can consider the image of 
+    $G_j \triangleleft H$ under the canonical projection $\pi(x) = xH$, hopefully this 
+    clarifies every doubt. \\
+
+    $$ \vv{\pi}(G_j) = G_jH/H = HH/H = H/H = H $$
+\end{proof} \vspace{0.2em}
+
+\newpage
