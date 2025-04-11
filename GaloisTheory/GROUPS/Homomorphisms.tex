@@ -1,0 +1,115 @@
+\subsection{Group homomorphisms}
+In this section, we will define the concept of group homomorphism, which we 
+will later use to proof a result about the solvability of polynomial equations.  
+
+\begin{definition}[Group homomorphism]
+    A group homomorphism is a function $\varphi: G \to H$ between 
+    two groups $G$ and $H$ such that:
+    
+    $$ \forall g_1, g_2 \in G\;\; \varphi(g_1g_2) = \varphi(g_1)\varphi(g_2) $$
+\end{definition} \vspace{0.2em}
+
+\begin{definition}[Group epimorphism]
+    A group homomorphism $\varphi: G \to H$ that is also a surjective 
+    function is called a group epimorphism.
+\end{definition} \vspace{0.2em}
+
+\begin{lemma}
+    The image of $H$ normal subgroup of $G$ via the epimorphism $\varphi: G \to K$
+    is a normal subgroup of the image of $K$ via the same epimorphism 
+    ($H \triangleleft G \Rightarrow \vv{\varphi}(H) \triangleleft K$). 
+\end{lemma}
+\begin{proof}
+    Consider the group $\vv{\varphi}(H)$ and show that it is normal in $K = \vv{\varphi}(G)$:
+
+    $$ \forall k \in K\;\; \forall l \in \vv{\varphi}(H)\;\; klk^{-1} = 
+        \varphi(g)\varphi(h)\varphi(g^{-1}) = \varphi(ghg^{-1}) \in \vv{\varphi}(H) $$ \\
+
+    This proof uses the fact that $\varphi$ is an epimorphism, hence it is surjective, to 
+    conclude that for every $k,l$ exists $g, h$ such that $klk^{-1} = \varphi(g)\varphi(h)
+    \varphi(g^{-1})$. For non suriective homomorphisms, the proof is not valid, because 
+    there might be elements in $K$ that are not images of elements in $G$, herby 
+    it could be impossible to find $g,h$. \\
+\end{proof} \vspace{0.2em}
+
+\begin{definition}[Group endomorphism]
+    A group homomorphism $\varphi: G \to H$ that is also a injective 
+    function is called a group endomorphism.
+\end{definition} \vspace{0.2em}
+
+\begin{definition}[Group isomorphism]
+    A group homomorphism $\varphi: G \to H$ that is both injective and surjective 
+    (herby a bijection) is called a group isomorphism.
+\end{definition} \vspace{0.2em}
+
+\begin{lemma}
+    If $A$ is an abelian group and $\varphi: A \to B$ is a group isomorphism, 
+    then $B$ is also an abelian group (notice that since a bijection is surjiective 
+    $B = \vv{\varphi}(A)$).
+\end{lemma}
+\begin{proof}
+    Since $\varphi$ is a group isomorphism, it is a bijection, herby every 
+    element in $b_i \in B$ is the image of an element in $a_i \in A$ via $\varphi$, 
+    thus, the following holds true:
+
+    $$ b_1b_2 = \varphi(a_1)\varphi(a_2) = \varphi(a_1a_2) = \varphi(a_2a_1) = 
+        \varphi(a_2)\varphi(a_1) = b_2b_1 $$ \\
+
+\end{proof} \vspace{0.2em}
+
+\newpage
+
+\begin{theorem}[Third theorem of isomorphism]
+    Consider the groups $H \triangleleft B \triangleleft A$. Then, there is an 
+    isomorphism between the quotient groups $(\frac{A}{H}/\frac{B}{H})$ and $\frac{A}{B}$.
+
+    $$ \frac{(\frac{A}{H})}{(\frac{B}{H})} \sim \frac{A}{B} $$ \vspace{0.2em}
+\end{theorem}
+\vspace{0.2em}
+
+To prove this theorem, it's helpful to keep in mind the form of the generic element of 
+the set (groups) we're working with (for an easier notation, we will call $H\frac{B}{H}$ by $K$):
+
+$$ \frac{A}{H} = \{ aH \;:\; a \in A \} $$
+$$ \frac{B}{H} = \{ bH \;:\; b \in B \} $$
+$$ \frac{A}{B} = \{ aB \;:\; a \in A \} $$
+$$ \frac{(\frac{A}{H})}{(\frac{B}{H})} = \{ aK \;:\; a \in A \} $$ 
+\vspace{0.2em}
+
+\begin{proof}
+    To prove that exists an isomorphism between such groups, we will just exibit it:
+
+    $$ \varphi : (\frac{A}{H})/(\frac{B}{H}) \rightarrow \frac{A}{B} $$
+    $$ \varphi(aK) = aB $$ \vspace{0.2em}
+
+    First things first: let's show that it is indeed an homomorphism (compatibility with $\cdot$):
+
+    $$ 
+        \varphi(rK)\varphi(tK) = 
+        rBtB = r(Bt)B = r(tB)B = rt(BB) = rtB = (rt)B = 
+        \varphi(rtK)
+    $$ \vspace{0.2em}
+
+    Note that here in this very argument we used the all these subgroups are normal, hence 
+    every right coset is equal to a left coset (lemma \ref{lem:normal_cosets}) when writing 
+    $ r(Bt)B = r(tB)B $. \\
+
+
+    We can clearly see that it is a bijection, since for every $aB$ in $\frac{A}{B}$, 
+    we can find $aK$ in $(\frac{A}{H})/(\frac{B}{H})$ such that $\varphi(aK) = aB$. Thus 
+    we only really need to show that it's an injection to complete the proof. Injectivity can 
+    be shown with the following argument: \\
+
+    $$ 
+        \varphi(rK) = \varphi(tK) \Rightarrow rB = tB \Rightarrow r\epsilon = 
+        t\epsilon \Rightarrow r = t 
+    $$ \vspace{0.2em}
+
+    These key obeservations show that the function $\varphi$ is indeed a bijective 
+    homomorphism, herby it is an isomorphism. To express the fact that an isomorphism exists
+    betweek two groups the symbol $\sim$ is used 
+    (sometimes it can be used $\cong$ as well, but not here). \\ 
+
+\end{proof} \vspace{0.2em}
+
+\newpage

@@ -1,0 +1,115 @@
+\subsection{Normal subgroups}
+In this section, we will define the concept of normal subgroup and we will 
+also talk about how normal subgroups are related with the concept of quotient group, 
+and conjugacy classes. We will also define the concept of simple group and we will
+discuss the Lagrange's theorem as a mean to help us prove that a given group is simple.
+
+\begin{definition}[Normal subgroup]
+    For every $H$ subgroup of $G$, we say that $H$ is a normal subgroup of $G$, and we indicate it 
+    with $H \triangleleft G$ if it's closed under conjugation:
+
+    $$ H \triangleleft G \iff \forall h \in H\;\;\forall g \in G\;\; ghg^{-1} \in H $$
+    $$ H \triangleleft G \iff \forall g \in G\;\; gHg^{-1} = H $$
+\end{definition} \vspace{0.2em}
+
+\begin{lemma} 
+\label{lem:normal_cosets}
+    If a group $G$ has a normal subgroup $H$, then the left cosets of $H$ in $G$ are equal to 
+    the right cosets of $H$ in $G$ and viceversa.
+\end{lemma} 
+\begin{proof}
+    $$ gHg^{-1} = H $$
+    $$ gHg^{-1}g = Hg $$
+    $$ gH = Hg $$
+\end{proof} \vspace{0.2em}
+
+\begin{definition}[Conjugacy class]
+    The conjugacy class of an element $g \in G$ is the set of all elements that are conjugate to $g$ 
+    in $G$, that is, the set of all $hgh^{-1}$: 
+    
+    $$ \texttt{Conj}_{G}(g) = \{ hgh^{-1} \mid h \in G \} $$
+\end{definition} \vspace{0.2em}
+
+\begin{lemma}
+\label{lem:conjugacy_classes}
+    Conjugancy classes are either completly disjoint or completly identical
+\end{lemma}
+\begin{proof}
+    
+    $$ \texttt{Conj}_{G}(a) \cap \texttt{Conj}_{G}(b) \neq \varnothing \Rightarrow 
+        [\; \exists h,k \in G\;\; hah^{-1} = kbk^{-1} \;] $$
+    $$ hah^{-1} = kbk^{-1} \Rightarrow k^{-1}hah^{-1} = bk^{-1} \Rightarrow (k^{-1}h)a(h^{-1}k) = b $$
+    $$ hah^{-1} = kbk^{-1} \Rightarrow ah^{-1} = h^{-1}kbk^{-1} \Rightarrow a = (h^{-1}k)b(k^{-1}h) $$
+\end{proof} \vspace{0.2em}
+
+\begin{theorem}[Lagrange's theorem]
+\label{thm:lagrange}
+    The order of $H$ subgroup of $G$ divides $|G|$.
+\end{theorem}
+\begin{proof}
+    The left cosets in $H$, meaning the family of sets $gH$ for some fixed $g \in G$, 
+    are all of the same size, since the value of $g$ doesn't alter the number 
+    of elements in $H$. More specifically, the size of the left cosets is equal 
+    to the size of $H$. 
+
+    $$ a \sim b \iff a \in bH $$ \vspace{0.2em}
+
+    We can easily see that the $\sim$ relation is an equivalence
+    relation, thus, $gH$ are a family of equivalence classes, herby they partion $G$, hence  
+    the order of $G$ is the sum of the orders of the left cosets (which all have the same size):
+
+    $$ |G| = |g_1H| + |g_2H| + \dots = |H| + |H| + \dots = n \cdot |H| $$
+
+\end{proof}
+
+\newpage
+
+\begin{lemma}
+\label{lem:intersectionOfNormalIsNormal}
+    The intersection of two normal subgroups is a normal subgroup.
+\end{lemma}
+\begin{proof}
+    Let $H_1$ and $H_2$ be two normal subgroups of $G$. Then, by definition of normality:
+
+    $$ \forall h \in (H_1 \cap H_2) \;\;\forall g \in G\;\; ghg^{-1} \in H_1 \land ghg^{-1} \in H_2 $$
+    $$ \therefore\;\; ghg^{-1} \in (H_1 \cap H_2) $$
+\end{proof} \vspace{0.2em}
+
+\begin{definition}[Simple group]
+    A group $G$ is called simple if it has no non-trivial normal subgroups. In other words, the only 
+    normal subgroups of $G$ are itself and $\{\epsilon\}$.
+\end{definition} \vspace{0.2em}
+
+\begin{definition}[Quotient of groups]
+    The quotient $\frac{G}{H}$ is the set of all the left cosets of $H$ in $G$. 
+    By this, we mean that for every fixed $g \in G$, $gH$ must be an element of $\frac{G}{H}$.
+\end{definition} \vspace{0.2em}
+
+We are intrested into studying the quotient of groups, in particular, we 
+want to understand when the quotient of a groups is a group itself. To do so, we will first 
+need to define an operation on elements of a quotient. Such operation is $\times$: \\
+
+$$ aH \times bH = (ab)H $$ \vspace{0.2em}
+
+This operation is well defined only if for every possible choice of $n_1, n_2 \in N$ 
+exists and $n_3 \in N$ such that the following holds true: \\
+
+$$ (an_1)(bn_2) = (ab)n_3 $$
+$$ (an_1)(bn_2) \in (ab)N $$ \vspace{0.2em}
+
+\begin{theorem}
+\label{thm:quotientGroup}
+    The quotient $(\frac{G}{H}, \times)$ is a group if and only if $H$ is normal subgroup of $G$
+\end{theorem}
+\begin{proof}
+    $$ (an_1)(bn_2) \in (ab)N $$
+    $$ (an_1)(bn_2) = (ab)n_3 $$
+    $$ an_1bn_2 = abn_3 $$
+    $$ n_1bn_2 = bn_3 $$
+    $$ b^{-1}n_1bn_2 = n_3 $$
+    $$ b^{-1}n_1b = n_3n_2^{-1} $$
+    $$ b^{-1}n_1b \in N $$
+    $$ b^{-1}Nb = N $$
+\end{proof} \vspace{0.2em}
+
+\newpage
