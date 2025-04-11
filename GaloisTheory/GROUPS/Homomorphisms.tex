@@ -15,6 +15,7 @@ will later use to proof a result about the solvability of polynomial equations.
 \end{definition} \vspace{0.2em}
 
 \begin{lemma}
+\label{lem:epimorphismPreservesNormality}
     The image of $H$ normal subgroup of $G$ via the epimorphism $\varphi: G \to K$
     is a normal subgroup of the image of $K$ via the same epimorphism 
     ($H \triangleleft G \Rightarrow \vv{\varphi}(H) \triangleleft K$). 
@@ -111,5 +112,60 @@ $$ \frac{(\frac{A}{H})}{(\frac{B}{H})} = \{ aK \;:\; a \in A \} $$
     (sometimes it can be used $\cong$ as well, but not here). \\ 
 
 \end{proof} \vspace{0.2em}
+
+\newpage
+
+\begin{definition}[Canonical projection]
+    The homomorphism $\pi: G \to \frac{G}{H}$ is called the canonical projection for $H$, 
+    and it is defined as $\pi(g) = gH$. Notice that it maps:
+    
+    $$ \vv{\pi}(H) = \epsilon $$ 
+    $$ \vv{\pi}(G) = \frac{G}{H} $$
+\end{definition} 
+\vspace{0.2em}
+
+The canonical projection is a surjective homomorphism, hence because of lemma 
+\ref{lem:epimorphismPreservesNormality} we can conclude that 
+it preserves normality. It's inverse $\pi^{-1}$ is injective, and is not 
+always true that an injective homomorphism preserves normality. The 
+canonical projection tho is a very special case because it's inverse 
+also preserves normality. \\
+
+\begin{theorem}[Normality preservation]
+    Normality is preserved: $\vv{\pi}(G) \triangleleft \vv{\pi}(K) \iff G \triangleleft K $
+\end{theorem}
+\begin{proof}
+    The $\Leftarrow$ direction is proved by lemma \ref{lem:epimorphismPreservesNormality}, 
+    since $\pi$ is a surjective homomorphism (epimorphism). The $\Rightarrow$ direction 
+    can be proved by the following argument:
+
+    $$ \vv{\pi}(G) \triangleleft \vv{\pi}(K) $$
+    $$ \forall k \in K \;\; \pi(k)\vv{\pi}(G)\pi(k^{-1}) \in \vv{\pi}(G) $$
+    $$ \forall k \in K \;\; \forall g \in G \;\; \pi(k)\pi(g)\pi(k^{-1}) \in \vv{\pi}(G) $$
+    $$ \forall k \in K \;\; \forall g \in G \;\; \pi(kgk^{-1}) \in \vv{\pi}(G) $$
+    $$ \forall k \in K \;\; \forall g \in G \;\; kgk^{-1} \in G $$
+     
+\end{proof} \vspace{0.2em}
+
+\begin{lemma}
+\label{lem:quotientSubGroups}
+    Every subgroup of a quotient of groups $\frac{G}{H}$ is of the form $\frac{S}{H}$ for 
+    some $S < G$. 
+\end{lemma}
+\begin{proof}
+    Every subgroup $T$ of $\frac{G}{H}$ is a set of cosets of $G$ with $H$ and can 
+    be expressed as:
+    
+    $$ T = \{ \; gH \in \frac{G}{H} \;:\; \dots \; \} $$ \vspace{0.2em}
+
+    Let's consider $S = \cev{\pi}(T) = \{ g \in G \;:\; gH \in T \}$. and show that is a group, 
+    by showing that is closed under the operation of the group $(G, \cdot)$: \\
+
+    $$ \forall a,b \in S \;\; [ \; (aH)(bH) = (ab)H \in T \; ] \Rightarrow (ab) \in S $$
+\end{proof} \vspace{0.2em}
+
+All the results so far will be later useful to study "Galois-solvability" of a group. As 
+stated many times so far, the Galois group of some polynomial will be Galois-solvable if and only if
+the polynomal has roots expressable as radicals. 
 
 \newpage
