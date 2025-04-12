@@ -100,3 +100,45 @@ every subgroup of a Galois group $Gal_{F}(E)$ is still a Galois group of some sm
 extension.
 
 \newpage
+
+\begin{theorem}
+    As a consequence of the first theorem of isomorphism (theorem \ref{thm:firstIsomorphism}) 
+    we can claim that there is an isomorphism between $Gal_{A}(B)$ and $Gal_{A}(S)/Gal_{B}(S)$ 
+    given that $A \subseteq B \subseteq S$ ($B$ subfield of $A$, $S$ field extension of $A$).
+\end{theorem}
+\begin{proof}
+    Let's define an homomorphism $\phi$ from $Gal_{B}(S)$ to $Gal_{B}(A)$ as shown below:
+
+    $$ \psi : Gal_{A}(S) \rightarrow Gal_{A}(B) $$
+    $$ \psi(\sigma : S \rightarrow S) = \sigma : B \rightarrow B $$ 
+    \vspace{0.1em}
+
+    This construction of $\psi$ makes it map an automorphism that fixes $A$ in $S$ to 
+    an automorphism that is still fixing $A$ but restricted to $B$. The function is clearly 
+    surjective, since every element of $Gal_{A}(B)$ reached by itself, anyway it's not important,
+    we just need to show that is a well-defined automorphism, to be able to inspect it's kernel: \\
+
+    $$ \psi(\sigma \circ \pi) = \sigma \circ \pi = \psi(\sigma) \circ \psi(\pi) $$
+    $$ \; [ \; \psi(\sigma \circ \gamma) = \sigma \; ] \; \iff \forall b \in B\;\; \gamma(b) = b $$
+    $$ \texttt{ker}_{\psi} = Gal_{B}(S) $$
+    \vspace{0.2em}
+
+    We can apply theorem \ref{thm:firstIsomorphism} (first theorem of isomorphism) 
+    to the current setup obtaining:
+
+    $$ Gal_{A}(B) = \vv{\psi}(Gal_{B}(S)) 
+    \sim \frac{Gal_{A}(S)}{\texttt{ker}_{\psi}} 
+    = \frac{Gal_{A}(S)}{Gal_{B}(S)} $$
+
+\end{proof}
+
+\vspace{6em}
+On many books and online resources, this theorem is stated as a corollary or even as a part 
+of the fundamental theorem of Galois theory, but I think it's important to state it separately, 
+since it depends from the first theorem of isomorphism. By stating it separately, we are 
+decoupling the fundamental theorem of Galois theory from the theorems of isomorphisms, herby
+making it possible for the reader to reed the proof of the fundamental theorem of Galois theory 
+without having a profound knowledge of group theory. Thus the reader might jump over this proof 
+entirely and still have a grasp of what's going on in a more general sense. \\
+
+\newpage
