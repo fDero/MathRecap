@@ -18,59 +18,116 @@ solvable Galois group.
 \end{definition}
 \vspace{0.2em}
 
+\begin{definition}[Perfect field]
+    A perfect field, is a field with no two non-zero elements such that their 
+    product is zero. Such field is sometimes also sometimes called a zero-characteristic
+    field or an integral field (rings are also sometimes called integral).  
+\end{definition}
+\vspace{0.2em}
+
+\begin{definition}[Root of unity]
+    In a field, a root of unity of order $k$ is an element $\omega$ such that 
+    $\omega^k = 1$. Of course, $1$ is always root of unity and it's called 
+    trivial.  
+\end{definition}
+\vspace{0.2em}
+
+\begin{lemma}
+\label{lem:FOmegaSolvable}
+    The Galois group $Gal_{F}(F(\omega))$ for some field $F$ and some 
+    non-trivial root of unity $\omega$ is abelian, herby it's solvable. 
+\end{lemma}
+\begin{proof}
+    Consider the product (composition) of two automorphisms $\varphi$, $\psi$ 
+    randomly choosen in $Gal_{F}(F(\omega))$. They commute:
+
+    $$ \psi(\varphi(\omega^i)) = \psi(\omega^{ij}) = \omega^{ijk} = 
+    \omega^{ikj} = \varphi(\omega^{ik}) = \varphi(\psi(\omega^i)) $$
+\end{proof}
+
+
+\begin{lemma}
+\label{lem:FOmegaGammaSolvable}
+    The Galois group $Gal_{F(\omega)}\big(F(\sqrt[k]{\gamma}, \omega)\big)$, for a perfect 
+    field $F$ and a primitive root of unity $\omega$, is cyclic and therefore abelian 
+    when $F(\sqrt[k]{\gamma}, \omega)$ is a normal extension.
+\end{lemma}
+\begin{proof}
+    Consider the polynomial $x^k - \gamma$ with $k$ distinct roots $r_i$. We know 
+    that every element in the form $\omega^i\sqrt[k]{\gamma}$ is a root of the
+    polynomial $x^k - \gamma$. Since they are exactly $k$ roots, we can
+    conclude that this form describes all the roots of the polynomial. 
+
+    Since automorphisms in $Gal_{F(\omega)}\big(F(\sqrt[k]{\gamma}, \omega)\big)$
+    are defined as the automorphisms of $F(\sqrt[k]{\gamma})$ that fix everything in 
+    $F(\omega)$, we can conclude that the following "$\tau$" is in such group:
+
+    $$ \tau(\omega^r\sqrt[k]{\gamma}) = \omega^r\tau(\sqrt[k]{\gamma}) $$
+    $$ \tau(\sqrt[k]{\gamma}) = \omega^j\sqrt[k]{\gamma} $$
+    \vspace{0.2em}
+
+    This means that, since $\omega$ is the primitive root of unity, and since the 
+    every non-trivial root of unity is a power of the primitive root, we can conclude that
+    the generic automorphism $\varphi$ in $Gal_{F(\omega)}\big(F(\sqrt[k]{\gamma}, \omega)\big)$ is
+    of the following form, herby generated from $\tau$:
+
+    $$ \varphi(\sqrt[k]{\gamma}) = (\tau \circ \tau \circ \dots \circ \tau)(\sqrt[k]{\gamma}) 
+    = \tau^{t}(\sqrt[k]{\gamma}) = \omega^{jt}\sqrt[k]{\gamma} $$
+
+\end{proof}
+
 \newpage
 
 \begin{theorem}[Fundamental theorem of polynomial equations]
-    Is possible to find a radical extension $R$ for a normal extension $S$ of a perfect field $F$, 
+    Is possible to find a normal radical extension $S$ of a perfect field $F$, 
     such that $S$ is splitting field for a given polynomial $p \in F[x]$ only if the Galois group 
     of $S$ is solvable.
 \end{theorem}
 \begin{proof}
 Let's proceed by induction on the numer of distinct, linearly independent roots
 of the polynomial $p$ that are not already in $F$. For $n=1$, we have only one root $\gamma$, 
-such that $S=F(\gamma)$ and $R=F(\gamma, \dots, \omega)$, where $\omega$ is a non trivial root 
-of unity. We know that in every radical extension, at least one root of unity can always be found. \\
+such that $S=F(\gamma)$ and $\omega$ be a primitive root of unity of order $k$ such that $\gamma^k$
+is in $F$. \\
 
 We know that both $Gal_F(F(\omega))$ and $Gal_{F(\omega)}(F(\gamma, \omega))$ are abelian, 
 therefore they're solvable, due to lemmas \ref{lem:FOmegaSolvable} and \ref{lem:FOmegaGammaSolvable} previously 
 discussed. We can prove that $Gal_F{F(\gamma, \omega)}$ is solvable by exibiting it's solvability chain, 
 which is composed of the following groups: \\
 
-$$ \{ id_F \} \triangleleft Gal_{F(\omega)}{F(\gamma, \omega)} \triangleleft Gal_{F}{F(\gamma, \omega)} $$
+$$ \{ id_F \} \triangleleft Gal_{F(\omega)}(F(\gamma, \omega)) \triangleleft Gal_{F}(F(\gamma, \omega)) $$
 \vspace{0.2em}
 
-The group $Gal_{F(\omega)}{F(\gamma, \omega)}$ is abelian, therefore it's quotient with the trivial group 
-also is abelian. The group $Gal_{F}{F(\gamma, \omega)}$ on the other hand it's not guaranteed to be abelian, 
-but the quotient $Gal_{F}{F(\gamma, \omega)} / Gal_{F(\omega)}{F(\gamma, \omega)}$ for sure is, since 
-it is isomorphic to $Gal_F{F(\omega)}$ due to theorem \ref{thm:GaloisIsomorphism}, which is known 
-for being abelian.
+The group $Gal_{F(\omega)}(F(\gamma, \omega))$ is abelian, therefore it's quotient with the trivial group 
+also is abelian. The group $Gal_{F}(F(\gamma, \omega))$ on the other hand it's not guaranteed to be abelian, 
+but the quotient $Gal_{F}(F(\gamma, \omega)) / Gal_{F(\omega)}(F(\gamma, \omega))$ for sure is, since 
+it is isomorphic to $Gal_F(F(\omega))$ due to theorem \ref{thm:GaloisIsomorphism}, which is known 
+for being abelian. \\
 
 $$ \frac{Gal_{F}(F(\gamma, \omega))}{Gal_{F(\omega)}(F(\gamma, \omega))} \sim Gal_F(F(\omega)) $$
 \vspace{0.2em}
 
 We wanted to show that $Gal_F(S)$ must be solvable, that's not quite we wanted yet, but 
-we're almost there. All we have to do is apply theorem \ref{thm:GaloisIsomorphism} a couple 
-more times:
+we're almost there. All we have to do is apply theorem \ref{thm:GaloisIsomorphism} one 
+more time: \\
 
-$$ Gal_F(F(\gamma)) \sim  \frac{Gal_{F}(F(\gamma, \omega))}{Gal_{F(\gamma)}(F(\gamma, \omega))} $$
-\vspace{0.2em}
-
-
-Thus, since we proved beforehand that $Gal_{F}(F(\gamma, \omega))$ is solvable, the whole quotient 
-is solvable, herby $Gal_F(F(\gamma))$ is solvable. We now apply the same approach one last time:
-
-$$ Gal_F(S) \sim  \frac{Gal_{F}(F(\gamma))}{Gal_{S}(F(\gamma))} $$
+$$ Gal_F(S) = Gal_F(F(\gamma)) \sim  \frac{Gal_{F}(F(\gamma, \omega))}{Gal_{F(\gamma)}(F(\gamma, \omega))} $$
 \vspace{0.2em}
 
 Since $Gal_{F}(F(\gamma))$ is solvable, the whole quotient is, herby $Gal_F(S)$ is solvable. Assuming the 
 statement is true up to the n-th root, let's prove it for the case with polynomials of $n+1$ roots. Let 
 $\hat{S}$ be the splitting field of a polynomial with one root more then before, observe that 
-$Gal_{F}(\hat{S})$ is still solvable because of, once again, theorem \ref{thm:GaloisIsomorphism}.
+$Gal_{F}(\hat{S})$ is still solvable because of, once again, theorem \ref{thm:GaloisIsomorphism}. \\
 
 $$ Gal_F(S) \sim \frac{Gal_F(\hat{S})}{Gal_{S}(\hat{S})} $$
 \vspace{0.2em}
 
 Since $Gal_F(S)$ and $Gal_{S}(\hat{S})$ are solvable, it follows that $Gal_F(\hat{S})$ must also be 
-solvable.
+solvable. \\
 
+Notice that in this proof, we have used the fact that $S$ is normal extension of $F$ to be 
+able to apply theorem \ref{thm:GaloisIsomorphism} and the fact that $S$ is radical 
+to be able to apply lemma \ref{lem:FOmegaGammaSolvable}. Both of these assumptions were indeed 
+necessary to complete the proof. \\
 \end{proof}
+
+\newpage
