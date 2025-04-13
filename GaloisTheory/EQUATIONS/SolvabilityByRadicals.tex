@@ -1,0 +1,76 @@
+\subsection{Solvability by radicals}
+Here we are, finally, proving once and for all that not all polynomial equations 
+are solvable by radicals. To prove such result, our plan is the following: 
+first we have to assume that given a polynomial with coefficients in an arbitraty field
+have $n$ roots, then we extend the field with such roots, obtaining a \emph{potentially} 
+different splitting field trough a normal extensions, then we extend the normal extension 
+up to the smallest radical extension possible. We will show that if extending the splitting
+field to a radical extension is possible, it means that the splitting field must have a 
+solvable Galois group. 
+\vspace{0.2em}
+
+\begin{definition}[Radical extension]
+    A radical extension $R = F(r_1, r_2, \dots, r_n)$ is an extension in which 
+    every $r_i$ can be expressed as a power of some other element of a smaller 
+    radical extension of $F$. This sentence can be expressed in symbols as:  
+
+    $$ (r_i)^k \in F(r_1, r_2, \dots, r_{i-1}) $$
+\end{definition}
+\vspace{0.2em}
+
+\newpage
+
+\begin{theorem}[Fundamental theorem of polynomial equations]
+    Is possible to find a radical extension $R$ for a normal extension $S$ of a perfect field $F$, 
+    such that $S$ is splitting field for a given polynomial $p \in F[x]$ only if the Galois group 
+    of $S$ is solvable.
+\end{theorem}
+\begin{proof}
+Let's proceed by induction on the numer of distinct, linearly independent roots
+of the polynomial $p$ that are not already in $F$. For $n=1$, we have only one root $\gamma$, 
+such that $S=F(\gamma)$ and $R=F(\gamma, \dots, \omega)$, where $\omega$ is a non trivial root 
+of unity. We know that in every radical extension, at least one root of unity can always be found. \\
+
+We know that both $Gal_F(F(\omega))$ and $Gal_{F(\omega)}(F(\gamma, \omega))$ are abelian, 
+therefore they're solvable, due to lemmas \ref{lem:FOmegaSolvable} and \ref{lem:FOmegaGammaSolvable} previously 
+discussed. We can prove that $Gal_F{F(\gamma, \omega)}$ is solvable by exibiting it's solvability chain, 
+which is composed of the following groups: \\
+
+$$ \{ id_F \} \triangleleft Gal_{F(\omega)}{F(\gamma, \omega)} \triangleleft Gal_{F}{F(\gamma, \omega)} $$
+\vspace{0.2em}
+
+The group $Gal_{F(\omega)}{F(\gamma, \omega)}$ is abelian, therefore it's quotient with the trivial group 
+also is abelian. The group $Gal_{F}{F(\gamma, \omega)}$ on the other hand it's not guaranteed to be abelian, 
+but the quotient $Gal_{F}{F(\gamma, \omega)} / Gal_{F(\omega)}{F(\gamma, \omega)}$ for sure is, since 
+it is isomorphic to $Gal_F{F(\omega)}$ due to theorem \ref{thm:GaloisIsomorphism}, which is known 
+for being abelian.
+
+$$ \frac{Gal_{F}(F(\gamma, \omega))}{Gal_{F(\omega)}(F(\gamma, \omega))} \sim Gal_F(F(\omega)) $$
+\vspace{0.2em}
+
+We wanted to show that $Gal_F(S)$ must be solvable, that's not quite we wanted yet, but 
+we're almost there. All we have to do is apply theorem \ref{thm:GaloisIsomorphism} a couple 
+more times:
+
+$$ Gal_F(F(\gamma)) \sim  \frac{Gal_{F}(F(\gamma, \omega))}{Gal_{F(\gamma)}(F(\gamma, \omega))} $$
+\vspace{0.2em}
+
+
+Thus, since we proved beforehand that $Gal_{F}(F(\gamma, \omega))$ is solvable, the whole quotient 
+is solvable, herby $Gal_F(F(\gamma))$ is solvable. We now apply the same approach one last time:
+
+$$ Gal_F(S) \sim  \frac{Gal_{F}(F(\gamma))}{Gal_{S}(F(\gamma))} $$
+\vspace{0.2em}
+
+Since $Gal_{F}(F(\gamma))$ is solvable, the whole quotient is, herby $Gal_F(S)$ is solvable. Assuming the 
+statement is true up to the n-th root, let's prove it for the case with polynomials of $n+1$ roots. Let 
+$\hat{S}$ be the splitting field of a polynomial with one root more then before, observe that 
+$Gal_{F}(\hat{S})$ is still solvable because of, once again, theorem \ref{thm:GaloisIsomorphism}.
+
+$$ Gal_F(S) \sim \frac{Gal_F(\hat{S})}{Gal_{S}(\hat{S})} $$
+\vspace{0.2em}
+
+Since $Gal_F(S)$ and $Gal_{S}(\hat{S})$ are solvable, it follows that $Gal_F(\hat{S})$ must also be 
+solvable.
+
+\end{proof}

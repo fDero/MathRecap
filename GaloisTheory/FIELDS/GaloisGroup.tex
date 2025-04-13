@@ -102,9 +102,11 @@ extension.
 \newpage
 
 \begin{theorem}
+\label{thm:GaloisIsomorphism}
     As a consequence of the first theorem of isomorphism (theorem \ref{thm:firstIsomorphism}) 
     we can claim that there is an isomorphism between $Gal_{A}(B)$ and $Gal_{A}(S)/Gal_{B}(S)$ 
-    given that $A \subseteq B \subseteq S$ ($B$ subfield of $A$, $S$ field extension of $A$).
+    given that $A \subseteq B \subseteq S$ and that $B$ is actually a \emph{normal extension} 
+    of the field $A$.
 \end{theorem}
 \begin{proof}
     Let's define an homomorphism $\phi$ from $Gal_{B}(S)$ to $Gal_{B}(A)$ as shown below:
@@ -114,11 +116,38 @@ extension.
     \vspace{0.1em}
 
     This construction of $\psi$ makes it map an automorphism that fixes $A$ in $S$ to 
-    an automorphism that is still fixing $A$ but restricted to $B$. The function is clearly 
-    surjective, since every element of $Gal_{A}(B)$ reached by itself, anyway it's not important,
-    we just need to show that is a well-defined automorphism, to be able to inspect it's kernel: \\
+    an automorphism that is still fixing $A$ but restricted to $B$. We need to show that it's 
+    an epimorphism, meaning that it is an homomorphism and that it's surjective, 
+    to then be able to inspect it's kernel and apply the first theorem of isomorphism 
+    (theorem \ref{thm:firstIsomorphism}). \\
 
+    To show that $\psi$ is an epimorphism, we start by showing that it is a homomorphism:
+
+    \vspace{0.2em}
     $$ \psi(\sigma \circ \pi) = \sigma \circ \pi = \psi(\sigma) \circ \psi(\pi) $$
+    \vspace{0.2em}
+
+    Since $\psi$ is compatible with the composition operation, we can say that it is a well-defined 
+    homomorphism. Now we need to show that it is surjective. The normality of $B$ as an extension
+    of $A$ is crucial to establish surjectivity here, because $B$ is normal, $B$ is the splitting 
+    field of some polynomial over $A$. By the \textbf{extension theorem for automorphisms}, every 
+    automorphism $\tau \in \text{Gal}_A(B)$ extends to some $\tilde{\tau} \in 
+    \text{Gal}_A(S)$. \\  
+
+    $$
+        \forall \tau \in \text{Gal}_A(B), \; \exists \tilde{\tau} \in \text{Gal}_A(S) 
+        \text{ such that } \tilde{\tau}|_B = \tau.
+    $$
+    \vspace{0.2em}
+    
+    Thus, $\psi(\tilde{\tau}) = \tau$, proving $\psi$ is surjective. If $B$ wasn't normal in $A$, 
+    there would exist automorphisms of $B$ over $A$ that cannot extend to $S$, 
+    breaking surjectivity. For example, if $B$ lacked a root required to 
+    define $\tilde{\tau}$, 
+    $\psi$ would fail to map onto $\text{Gal}_A(B)$. \\
+    
+    Established that we're working with an epimorphism, we can now inspect its kernel:
+
     $$ \; [ \; \psi(\sigma \circ \gamma) = \sigma \; ] \; \iff \forall b \in B\;\; \gamma(b) = b $$
     $$ \texttt{ker}_{\psi} = Gal_{B}(S) $$
     \vspace{0.2em}
@@ -131,14 +160,5 @@ extension.
     = \frac{Gal_{A}(S)}{Gal_{B}(S)} $$
 
 \end{proof}
-
-\vspace{6em}
-On many books and online resources, this theorem is stated as a corollary or even as a part 
-of the fundamental theorem of Galois theory, but I think it's important to state it separately, 
-since it depends from the first theorem of isomorphism. By stating it separately, we are 
-decoupling the fundamental theorem of Galois theory from the theorems of isomorphisms, herby
-making it possible for the reader to reed the proof of the fundamental theorem of Galois theory 
-without having a profound knowledge of group theory. Thus the reader might jump over this proof 
-entirely and still have a grasp of what's going on in a more general sense. \\
 
 \newpage
