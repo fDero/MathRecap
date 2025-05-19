@@ -18,8 +18,6 @@
 *-converted-to.*
 *.ps
 *.eps
-*.pdf
-.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
